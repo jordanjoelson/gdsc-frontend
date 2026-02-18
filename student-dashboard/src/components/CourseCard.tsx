@@ -9,7 +9,7 @@ function CourseCard({ name, progress }: CourseCardProps) {
   return (
     <div className="group relative w-84 mt-15 ml-15
       transform transition-all duration-300 ease-in-out hover:-translate-y-2
-      hover:scale-[1.02] hover:shadow-2xl hover:cursor-pointer ">
+      hover:scale-[1.02] hover:cursor-pointer ">
 
       {/* background layer 1 */}
       <div className="absolute -top-4 -left-4 w-full h-full bg-[#1F1C3D] rounded-2xl z-0"></div>
