@@ -10,13 +10,15 @@ const demoCourses = [
 
 export default function CourseSections() {
     return (
-        <section className = "p-6">
-            <h2 className = "text-[55px] font-semibold mb-4">Courses</h2>
+        <section className = "p-6 min-h-screen bg-[#352D51]">
+            <h2 className = "text-[55px] font-semibold mb-4 text-white">Courses</h2>
 
-            <div className = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className = "flex flex-wrap justify-center mt-15 gap-18 ml-7">
                 {demoCourses.map((c) => (
+                    <div key={c.name} className="flex-1 min-w-83 max-w-83">
                     <CourseCard name={c.name} progress={c.progress} />
-                ))}
+                </div>
+            ))}
             </div>
         </section>
     )
