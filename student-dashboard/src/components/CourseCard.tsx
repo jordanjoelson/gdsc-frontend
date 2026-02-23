@@ -12,13 +12,13 @@ function CourseCard({ name, progress }: CourseCardProps) {
       hover:scale-[1.02] hover:cursor-pointer ">
 
       {/* background layer 1 */}
-      <div className="absolute -top-4 -left-4 w-full h-full bg-[#1F1C3D] rounded-2xl z-0"></div>
+      <div className="absolute top-4 left-4 w-full h-full bg-[#1F1C3D] rounded-2xl z-0"></div>
 
       {/* orange line horizontal */}
-      <div className="absolute -top-8 left-6 w-4/5 h-2 bg-orange-300 rounded-full z-0"></div>
+      <div className="absolute -top-4 left-7 w-4/5 h-2 bg-orange-300 rounded-full z-0"></div>
 
       {/* orange line vertical */}
-      <div className = "absolute -left-8 w-2 h-4/5 bg-orange-300 rounded-full"/>
+      <div className = "absolute -left-4 top-4 w-2 h-4/5 bg-orange-300 rounded-full"/>
 
       {/* MAIN CARD */}
       <div className="relative z-10 bg-[#362A5A] p-10 rounded-2xl border-3 border-[#1F1C3D]
