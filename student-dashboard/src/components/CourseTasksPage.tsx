@@ -7,9 +7,9 @@ type Task = {
 }
 
 const demoTasks: Task[] = [
-  { id: "1", course: "Linear Algebra", title: "Task", due: "Due date", done: false },
-  { id: "2", course: "Linear Algebra", title: "Task", due: "Due date", done: false },
-  { id: "3", course: "Linear Algebra", title: "Task", due: "Due date", done: true },
+  { id: "1", course: "Linear Algebra", title: "Homework #5", due: "03-19-2026", done: false },
+  { id: "2", course: "Linear Algebra", title: "Read Module 3", due: "04-04-2026", done: false },
+  { id: "3", course: "Linear Algebra", title: "Finish class assignment", due: "04-05-2026", done: true },
 ]
 
 function TaskRow({ task }: { task: Task }) {
@@ -34,15 +34,15 @@ function TaskRow({ task }: { task: Task }) {
 
 function ProgressMiniCard({ pct }: { pct: number }) {
   return (
-    <div className="relative w-45 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-[1.02]">
-      <div className="absolute inset-0 translate-x-2 translate-y-2 border-2 border-orange-300 rounded-2xl z-0" />
+    <div className="relative w-60 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-[1.02]">
+      <div className="absolute inset-0 translate-x-3 translate-y-3 border-3 border-orange-300 rounded-2xl z-0" />
 
-      <div className="relative z-10 rounded-2xl border-2 border-[#FA706C] bg-[#2A2347] p-4">
-        <p className="text-white/70 text-xs mb-2">Overall Progress</p>
-        <p className="text-white text-3xl font-semibold mb-3">{pct}%</p>
+      <div className="relative z-10 rounded-2xl border-3 border-[#FA706C] bg-[#2A2347] p-4">
+        <p className="text-white/70 text-s mb-2">Overall Progress</p>
+        <p className="text-white text-5xl font-semibold mb-3">{pct}%</p>
 
-        <div className="h-2 bg-[#1F1C3D] rounded-full">
-          <div className="h-2 bg-[#FA706C] rounded-full" style={{ width: `${pct}%` }} />
+        <div className="h-4 bg-[#1F1C3D] rounded-full">
+          <div className="h-4 bg-[#FA706C] rounded-full" style={{ width: `${pct}%` }} />
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@ function ProgressMiniCard({ pct }: { pct: number }) {
 
 function Header({ courseId, pct }: { courseId: string; pct: number }) {
   return (
-    <div className="relative w-full h-60 mb-15">
+    <div className="relative w-full h-70 mb-15">
 
       {/* orange accents */}
       <div className="absolute -left-4 top-5 h-4/5 w-2 bg-orange-300 rounded-full" />
