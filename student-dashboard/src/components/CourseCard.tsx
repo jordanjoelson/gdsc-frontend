@@ -21,13 +21,13 @@ function CourseCard({ name, progress }: CourseCardProps) {
       <div className = "absolute -left-4 top-4 w-2 h-4/5 bg-orange-300 rounded-full"/>
 
       {/* MAIN CARD */}
-      <div className="relative z-10 bg-[#362A5A] p-10 rounded-2xl border-3 border-[#1F1C3D]
+      <div className="relative z-10 h-60 bg-[#362A5A] p-10 rounded-2xl border-3 border-[#1F1C3D]
         group-hover:bg-orange-300 transition-colors duration-300">
-        <h2 className="text-white text-xl font-semibold mb-6">
+        <h2 className="text-white text-3xl font-semibold mb-6">
           {name}
         </h2>
 
-        <div className="h-3 bg-[#1F1C3D] rounded-full">
+        <div className="mt-20 h-3 bg-[#1F1C3D] rounded-full">
           <div className="h-3 w-3/4 bg-[#FA706C] rounded-full"
              style = {{width: `${pct}%`}}
           ></div>
