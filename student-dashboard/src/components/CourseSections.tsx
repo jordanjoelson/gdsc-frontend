@@ -5,7 +5,6 @@ const demoCourses = [
     {name: "Calculus I", progress: 50},
     {name: "Data Structures", progress: 20},
     {name: "Algorithms", progress: 10},
-    {name: "Machine Learning", progress: 5},
 ]
 
 export default function CourseSections() {
@@ -19,6 +18,29 @@ export default function CourseSections() {
                     <CourseCard name={c.name} progress={c.progress} />
                 </div>
             ))}
+
+            {/* Add button */}
+            <div className = "flex-1 min-w-83 max-w-83 flex justify-center items-center">
+                <button
+                    className="
+                        w-28 h-28
+                        rounded-full
+                        bg-[#2B214A]
+                        text-white
+                        text-6xl
+                        flex items-center justify-center
+                        shadow-lg
+                        hover:scale-110
+                        transition
+                    "
+                    aria-label="Add course"
+                    onClick={() => {
+                        console.log("Add course clicked")
+                    }}
+                >
+                    +
+                </button>
+            </div>
             </div>
         </section>
     )
