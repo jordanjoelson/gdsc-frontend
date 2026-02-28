@@ -2,15 +2,27 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './style.css'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Layout from "@/app/layout"
-import CourseSections from "@/components/CourseSections"
+//pages being imported
+import Dashboard from "@/pages/Dashboard"
+import Classes from "@/pages/Classes"
+import Calendar from "@/pages/Calendar"
+import Achievments from "@/pages/Achievments"
+
 
 export default function App() {
   return (
-    <Layout>
-      <CourseSections />
-    </Layout>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/classes" element={<Classes />} />
+          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/achievments" element={<Achievments />} />
+        </Routes>
+      </Layout>
+    </Router>
   )
 }
 
