@@ -2,9 +2,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './style.css'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+//import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Layout from "@/app/layout"
-import CourseSections from "@/components/CourseSections"
+//import CourseSections from "./components/CourseSections"
 import CourseTasksPage from "./components/CourseTasksPage";
 
 export default function App() {
