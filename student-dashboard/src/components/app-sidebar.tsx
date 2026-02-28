@@ -11,12 +11,13 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar"
 import '../style.css';
+import { Link } from 'react-router-dom';
 
 const navItems = [ //Each of the items in the sidebar 
-  {label: "Dashboard", icon: "🔥"},
-  {label: "Classes", icon: "🔥"},
-  {label: "Calendar", icon: "🔥"},
-  {label: "Achievments", icon: "🔥"},
+  {label: "Dashboard", icon: "🔥", path: "/"},
+  {label: "Classes", icon: "🔥", path: "/classes"},
+  {label: "Calendar", icon: "🔥", path: "/calendar"},
+  {label: "Achievments", icon: "🔥", path: "/achievments"},
 ]
 const logout = [
   {label: "Logout", icon:"🔥"}
@@ -33,10 +34,12 @@ export function AppSidebar() {
             <SidebarMenu>
               {navItems.map((item) => (
                 <SidebarMenuItem key={item.label}>
-                  <SidebarMenuButton className="!bg-indigo-950 hover:!bg-buttonbg !py-10 text-lg font-onest font-bold flex items-center justify-center gap-2">
-                    {/* <span>{item.icon}</span> */}
-                    <span>{item.label}</span>
-                  </SidebarMenuButton>
+                  <Link to={item.path} style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+                    <SidebarMenuButton className="!bg-indigo-950 hover:!bg-buttonbg !py-10 text-lg font-onest font-bold flex items-center justify-center gap-2 w-full">
+                      {/* <span>{item.icon}</span> */}
+                      <span>{item.label}</span>
+                    </SidebarMenuButton>
+                  </Link>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
