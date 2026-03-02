@@ -17,8 +17,7 @@ import Achievments from "@/pages/Achievments"
 import Login from "@/pages/auth/login"
 import Signup from "@/pages/auth/signup"
 import SignupOrLogin from "@/pages/auth/signupOrLogin"
-import Authentication from "@/pages/auth/Authentication"
-
+import Verify from "@/pages/auth/verify"
 
 export default function App() {
   return (
@@ -29,7 +28,7 @@ export default function App() {
         <Route path="/auth" element={<SignupOrLogin />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/auth/verify" element={<Authentication title={''} subtitle={''} children={undefined} />} />
+        <Route path="/auth/verify" element={<Verify />} />
 
         {/* APP ROUTES (with sidebar layout) */}
         <Route
