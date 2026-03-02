@@ -1,23 +1,18 @@
 import { Link } from "react-router-dom"
 import Authentication from "./Authentication"
-import Logo from "@/icons/logo.svg"
 import AuthCard from "./authcard"
 
 export default function Login() {
   return (
     <Authentication>
       <AuthCard title="Cosmo">
-        {/* Center logo */}
-        <div className="mt-2 mb-4">
-          <img src={Logo} alt="Logo" className="mx-auto h-20 w-20" />
-        </div>
 
         {/* Inputs */}
         <div className="space-y-3">
           <input
             type="email"
             placeholder="Enter email"
-            className="w-full rounded-lg bg-white/80 px-4 py-2 text-[#2b2350] placeholder-[#2b2350]/50 outline-none focus:ring-2 focus:ring-orange-300/60"
+            className="w-full rounded-lg bg-white/80 px-4 py-2 text-[#2b2350] placeholder-[#2b2350]/50 outline-none focus:ring-2 focus:ring-orange-300/60 mt-10"
           />
           <div>
             <input
