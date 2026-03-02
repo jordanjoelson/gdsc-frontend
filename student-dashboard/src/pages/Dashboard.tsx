@@ -1,7 +1,5 @@
-import CourseSections from "../components/CourseSections";
-
 export default function Dashboard() {
   return (
-    <CourseSections />
+    <h1>Dashboard</h1>
   );
 }
