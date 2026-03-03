@@ -38,7 +38,7 @@ function TaskRow({
   onToggleDone: (id: string) => void
 }) {
   return (
-    <div className="relative w-full transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-[1.02]">
+    <div className="relative w-full transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-[1.02] hover:shadow-xl hover:shadow-[#1e1835]">
       <div className="h-1.5 w-[90%] bg-orange-300 rounded-full mb-1.5 ml-6" />
       <div className="absolute h-2/3 w-1.5 bg-orange-300 rounded-full -left-3 top-4" />
 
@@ -83,7 +83,7 @@ function ProgressMiniCard({ pct }: { pct: number }) {
   }, [count])
 
   return (
-    <div className="relative w-60 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-[1.02]">
+    <div className="relative w-60 transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-[1.02] ">
       <div className="absolute inset-0 translate-x-3 translate-y-3 border-3 border-orange-300 rounded-2xl z-0" />
 
       <div className="relative z-10 rounded-2xl border-3 border-[#FA706C] bg-[#2A2347] p-4">

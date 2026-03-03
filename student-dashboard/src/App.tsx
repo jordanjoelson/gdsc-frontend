@@ -11,7 +11,7 @@ import Dashboard from "@/pages/Dashboard"
 import Classes from "@/pages/Classes"
 import Calendar from "@/pages/Calendar"
 import Achievments from "@/pages/Achievments"
-import CourseTasksPage from "@/components/CourseTasksPage"
+import CourseTasksPage from "@/pages/CourseTasksPage"
 
 //login/signup pages
 // login/signup pages
