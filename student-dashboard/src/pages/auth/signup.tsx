@@ -1,18 +1,78 @@
-import { Link } from "react-router-dom"
+import { useState } from "react"
 import Authentication from "./Authentication"
+import AuthCard from "./authcard"
 
 export default function Signup() {
-  return (
-    <Authentication title="Create account" subtitle="Sign up to get started.">
-      {/* your form goes here */}
-      <div className="text-white/80">
-        Signup form here…
-      </div>
+  const [agreed, setAgreed] = useState(false)
 
-      <div className="mt-6 text-white/70 text-sm">
-        Already have an account?{" "}
-        <Link to="/login" className="text-white underline">Log in</Link>
-      </div>
+  return (
+    <Authentication>
+      <AuthCard title="Sign Up">
+        {/* Inputs */}
+        <div className="space-y-3">
+          <input
+            type="text"
+            placeholder="Enter name"
+            className="w-full rounded-lg bg-white/80 px-4 py-2 text-[#2b2350] placeholder-[#2b2350]/50 outline-none focus:ring-2 focus:ring-orange-300/60 mt-10"
+          />
+
+          <input
+            type="email"
+            placeholder="Enter email"
+            className="w-full rounded-lg bg-white/80 px-4 py-2 text-[#2b2350] placeholder-[#2b2350]/50 outline-none focus:ring-2 focus:ring-orange-300/60"
+          />
+
+          <input
+            type="password"
+            placeholder="Enter password"
+            className="w-full rounded-lg bg-white/80 px-4 py-2 text-[#2b2350] placeholder-[#2b2350]/50 outline-none focus:ring-2 focus:ring-orange-300/60"
+          />
+        </div>
+
+        {/* Checkbox row */}
+        <label className="mt-4 flex items-center gap-2 text-sm text-white/70 select-none">
+          <input
+            type="checkbox"
+            checked={agreed}
+            onChange={(e) => setAgreed(e.target.checked)}
+            className="h-4 w-4 accent-orange-300"
+          />
+          <span>I agree to the Terms and Conditions</span>
+        </label>
+
+        {/* Sign up button (disabled until checked) */}
+        <button
+          type="button"
+          disabled={!agreed}
+          className={`mt-5 w-full rounded-xl py-2.5 font-semibold text-white shadow active:opacity-80
+            ${
+              agreed
+                ? "bg-orange-300 hover:bg-orange-400 hover:cursor-pointer"
+                : "bg-orange-300/40 cursor-not-allowed"
+            }`}
+        >
+          Sign Up
+        </button>
+
+        {/* Divider text */}
+        <div className="mt-4 text-center text-xs text-white/50">
+          ------ Or register with ------
+        </div>
+
+        {/* Social buttons */}
+        <div className="mt-3 grid grid-cols-2 gap-3">
+          <button
+            type="button"
+            className="h-10 rounded-xl bg-[#1F1C3D] hover:cursor-pointer"
+            aria-label="Sign in with provider 1"
+          />
+          <button
+            type="button"
+            className="h-10 rounded-xl bg-[#1F1C3D] hover:cursor-pointer"
+            aria-label="Sign in with provider 2"
+          />
+        </div>
+      </AuthCard>
     </Authentication>
   )
 }
