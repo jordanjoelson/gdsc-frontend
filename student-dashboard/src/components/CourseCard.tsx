@@ -45,9 +45,9 @@ export default function CourseCard({ id, name, progress, onDelete }: CourseCardP
 
         <h2 className="text-white text-3xl font-semibold mb-6">{name}</h2>
 
-        <div className="mt-20 h-3 bg-[#1F1C3D] rounded-full">
+        <div className="mt-20 h-6 bg-[#1F1C3D] rounded-full">
           <div
-            className="h-3 bg-[#FA706C] rounded-full"
+            className="h-6 bg-[#FA706C] rounded-full"
             style={{ width: `${pct}%` }}
           />
         </div>
