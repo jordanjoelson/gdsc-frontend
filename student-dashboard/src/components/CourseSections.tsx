@@ -1,45 +1,138 @@
+import { useEffect, useMemo, useState } from "react"
 import CourseCard from "@/components/CourseCard"
 
-const demoCourses = [
-    {name: "Linear Algebra", progress: 75},
-    {name: "Calculus I", progress: 50},
-    {name: "Data Structures", progress: 20},
-    {name: "Algorithms", progress: 10},
-    { name: "Machine Learning", progress: 5 },
-    {name: "Linear Algebra", progress: 75},
-    {name: "Calculus I", progress: 50},
-    {name: "Data Structures", progress: 20},
-    {name: "Algorithms", progress: 10},
-    { name: "Machine Learning", progress: 5 },
-    { name: "Machine Learning", progress: 5 },
+type Course = {
+  id: string
+  name: string
+  progress: number
+}
+
+const seedCourses: Course[] = [
+  { id: crypto.randomUUID(), name: "Linear Algebra", progress: 75 },
+  { id: crypto.randomUUID(), name: "Calculus I", progress: 50 },
 ]
 
 export default function CourseSections() {
-    return (
-        <section className = "min-h-screen bg-[#352D51] px-10 py-6">
-            <h2 className = "text-6xl font-semibold mb-4 text-white">Courses</h2>
+  const [courses, setCourses] = useState<Course[]>(() => {
+    const saved = localStorage.getItem("courses")
+    if (!saved) return seedCourses
+    return JSON.parse(saved)
+  })
 
-            <div className = "mt-15 mb-12 grid gap-18 grid-cols-[repeat(auto-fit,minmax(360px,1fr))]">
-                {demoCourses.map((c) => (
-                    <CourseCard key={c.name} name={c.name} progress={c.progress} />
-            ))}
+  const [isOpen, setIsOpen] = useState(false)
+  const [newName, setNewName] = useState("")
+  const [error, setError] = useState<string | null>(null)
 
-            <button
-            className="
-                flex items-center justify-center
-                min-h-57.5
-                rounded-2xl
-                bg-transparent"
-            >
+  useEffect(() => {
+    localStorage.setItem("courses", JSON.stringify(courses))
+  }, [courses])
 
-            {/* Add button */}
-            <div 
-                className = "w-28 h-28 rounded-full bg-[#2B214A] text-white text-6xl flex items-center justify-center shadow-lg hover:scale-110 transition"
-            >
-                +
+  const canSubmit = useMemo(() => newName.trim().length > 0, [newName])
+
+  function addCourse() {
+    const name = newName.trim()
+
+    if (!name) {
+      setError("Course name is required.")
+      return
+    }
+
+    setCourses((prev) => [
+      ...prev,
+      {
+        id: crypto.randomUUID(),
+        name,
+        progress: 0, // always starts at 0
+      },
+    ])
+
+    setNewName("")
+    setError(null)
+    setIsOpen(false)
+  }
+
+  function deleteCourse(id: string) {
+    if (!window.confirm("Are you sure you want to delete this course?")) return
+    setCourses((prev) => prev.filter((c) => c.id !== id))
+  }
+
+  return (
+    <section className="min-h-screen bg-[#352D51] px-10 py-6">
+      <h2 className="text-6xl font-semibold mb-4 text-white">Courses</h2>
+
+      <div className="mt-15 mb-12 grid gap-18 grid-cols-[repeat(auto-fit,minmax(360px,1fr))]">
+        {courses.map((c) => (
+          <CourseCard
+            key={c.id}
+            id={c.id}
+            name={c.name}
+            progress={c.progress}
+            onDelete={deleteCourse}
+          />
+        ))}
+
+        {/* Add Button */}
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          className="flex items-center justify-center min-h-57.5 rounded-2xl bg-transparent"
+        >
+          <div className="w-28 h-28 rounded-full bg-[#2B214A] text-white text-6xl flex items-center justify-center shadow-lg hover:scale-110 transition">
+            +
+          </div>
+        </button>
+      </div>
+
+      {/* Add Course Modal */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
+          onClick={() => setIsOpen(false)}
+        >
+          <div
+            className="w-full max-w-md rounded-2xl bg-[#2B214A] p-6 text-white shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between">
+              <h3 className="text-2xl font-semibold">Add a course</h3>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-2xl"
+              >
+                ×
+              </button>
             </div>
-            </button>
+
+            <div className="mt-5 space-y-4">
+              <input
+                value={newName}
+                onChange={(e) => setNewName(e.target.value)}
+                className="w-full rounded-lg bg-white/85 px-4 py-2 text-[#2b2350] outline-none"
+                placeholder="Course name (e.g., Physics)"
+              />
+
+              {error && <p className="text-orange-200">{error}</p>}
+
+              <div className="flex gap-3 pt-2">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="w-full rounded-xl bg-white/10 py-2.5 font-semibold"
+                >
+                  Cancel
+                </button>
+
+                <button
+                  disabled={!canSubmit}
+                  onClick={addCourse}
+                  className="w-full rounded-xl bg-orange-400 py-2.5 font-semibold text-white disabled:opacity-50"
+                >
+                  Add
+                </button>
+              </div>
             </div>
-        </section>
-    )
+          </div>
+        </div>
+      )}
+    </section>
+  )
 }
