@@ -29,7 +29,7 @@ export default function SignupOrLogin() {
           <Link to="/signup">
             <button
               type="button"
-              className="w-full rounded-xl bg-orange-300 py-3 font-semibold text-white shadow hover:bg-orange-400 mb-3"
+              className="w-full rounded-xl bg-orange-300 py-3 font-semibold text-white shadow hover:bg-orange-400 mb-3 hover:cursor-pointer"
             >
               Create Account
             </button>
@@ -38,7 +38,7 @@ export default function SignupOrLogin() {
           <Link to="/login">
             <button
               type="button"
-              className="w-full rounded-xl bg-orange-300 py-3 font-semibold text-white shadow hover:bg-orange-400 active:opacity-80"
+              className="w-full rounded-xl bg-orange-300 py-3 font-semibold text-white shadow hover:bg-orange-400 active:opacity-80 hover:cursor-pointer"
             >
               Login
             </button>
