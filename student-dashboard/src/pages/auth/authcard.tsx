@@ -4,11 +4,16 @@ import Logo from "@/icons/logo.svg"
 interface AuthCardProps {
   title?: string
   children: ReactNode
+  showFlowers?: boolean
 }
 
-export default function AuthCard({ title, children }: AuthCardProps) {
+export default function AuthCard({
+  title,
+  children,
+  showFlowers = true,
+}: AuthCardProps) {
   return (
-    <div className="relative mx-auto w-full max-w-md mt-7">
+    <div className="relative mx-auto w-full max-w-md mt-10">
       {/* Decorative corner lines */}
       <div className="absolute -top-11 h-1 w-2/3 bg-orange-300 rounded-2xl" />
       <div className="absolute -top-14 h-1 w-1/2 bg-orange-300 rounded-2xl" />
@@ -26,20 +31,22 @@ export default function AuthCard({ title, children }: AuthCardProps) {
       <div className="absolute inset-0 -translate-x-7 -translate-y-7 rounded-2xl bg-[#1F1C3D]" />
 
       {/* Main card */}
-      <div className="relative rounded-2xl bg-[#362A5A] shadow-xl border-2 border-[#1F1C3D] overflow-hidden">
-        
-        {/* Background flowers */}
-        <img
-          src={Logo}
-          alt=""
-          className="absolute -right-90 -top-100 w-200 max-w-none opacity-20 pointer-events-none select-none"
-        />
-
-        <img
-          src={Logo}
-          alt=""
-          className="absolute right-10 top-30 w-200 max-w-none opacity-20 pointer-events-none select-none"
-        />
+      <div className="relative rounded-2xl bg-[#362A5A] shadow-xl border-2 border-[#1F1C3D] overflow-hidden h-[80vh] max-h-[80vh]">
+        {/* Background flowers (optional) */}
+        {showFlowers && (
+          <>
+            <img
+              src={Logo}
+              alt=""
+              className="absolute -right-90 -top-100 w-200 max-w-none opacity-20 pointer-events-none select-none"
+            />
+            <img
+              src={Logo}
+              alt=""
+              className="absolute right-10 top-30 w-200 max-w-none opacity-20 pointer-events-none select-none"
+            />
+          </>
+        )}
 
         <div className="relative p-8">
           {title && (
