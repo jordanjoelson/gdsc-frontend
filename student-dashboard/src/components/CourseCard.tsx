@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom"
+
 type CourseCardProps = {
   id: string
   name: string
@@ -6,10 +8,12 @@ type CourseCardProps = {
 }
 
 export default function CourseCard({ id, name, progress, onDelete }: CourseCardProps) {
+  const navigate = useNavigate()
   const pct = Math.max(0, Math.min(100, progress))
 
   return (
     <div
+      onClick={() => navigate(`/classes/${id}`)}
       className="group relative w-full transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-[1.02] hover:cursor-pointer"
     >
       {/* background layer 1 */}

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react"
+import { useParams } from "react-router-dom"
 import {
   AnimatePresence,
   motion,
@@ -14,6 +15,14 @@ type Task = {
   due: string
   done: boolean
 }
+
+type Course = {
+  id: string
+  name: string
+  progress: number
+}
+
+type TasksByCourse = Record<string, Task[]>
 
 const demoTasks: Task[] = [
   { id: "1", course: "Linear Algebra", title: "Homework #5", due: "2026-03-19", done: false },
@@ -110,11 +119,64 @@ function Header({ courseId, pct }: { courseId: string; pct: number }) {
 }
 
 export default function CourseTasksPage() {
-  const courseId = "Linear Algebra"
+  const { courseId } = useParams()
+  const safeCourseId = courseId ?? ""
 
-  const [tasks, setTasks] = useState<Task[]>(
-    demoTasks.filter((t) => t.course === courseId)
-  )
+  // Use the actual course NAME for the header (keep prop name "courseId" so UI stays identical)
+  const courseName = useMemo(() => {
+    try {
+      const raw = localStorage.getItem("courses")
+      if (!raw) return safeCourseId || "Course"
+      const courses: Course[] = JSON.parse(raw)
+      const found = courses.find((c) => c.id === safeCourseId)
+      return (found?.name ?? safeCourseId) || "Course"
+    } catch {
+      return safeCourseId || "Course"
+    }
+  }, [safeCourseId])
+
+  // Load tasks for this course from localStorage, otherwise fall back to demoTasks
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    try {
+      const raw = localStorage.getItem("tasksByCourse")
+      if (raw) {
+        const map: TasksByCourse = JSON.parse(raw)
+        return map[safeCourseId] ?? []
+      }
+    } catch {
+      // ignore
+    }
+    return demoTasks.filter((t) => t.course === courseName)
+  })
+
+  // When route changes to a different course, load that course's tasks
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("tasksByCourse")
+      if (raw) {
+        const map: TasksByCourse = JSON.parse(raw)
+        setTasks(map[safeCourseId] ?? [])
+        return
+      }
+    } catch {
+      // ignore
+    }
+
+    setTasks(demoTasks.filter((t) => t.course === courseName))
+  }, [safeCourseId, courseName])
+
+  // Save tasks for this course
+  useEffect(() => {
+    if (!safeCourseId) return
+    try {
+      const raw = localStorage.getItem("tasksByCourse")
+      const map: TasksByCourse = raw ? JSON.parse(raw) : {}
+      map[safeCourseId] = tasks
+      localStorage.setItem("tasksByCourse", JSON.stringify(map))
+    } catch {
+      // ignore
+    }
+  }, [tasks, safeCourseId])
 
   const [isOpen, setIsOpen] = useState(false)
   const [title, setTitle] = useState("")
@@ -126,6 +188,28 @@ export default function CourseTasksPage() {
     const doneCount = tasks.filter((t) => t.done).length
     return Math.round((doneCount / tasks.length) * 100)
   }, [tasks])
+
+  // ✅ NEW: write pct into the matching course.progress so CourseCard updates
+  useEffect(() => {
+    if (!safeCourseId) return
+
+    try {
+      const raw = localStorage.getItem("courses")
+      if (!raw) return
+
+      const courses: Course[] = JSON.parse(raw)
+      const next = courses.map((c) =>
+        c.id === safeCourseId ? { ...c, progress: pct } : c
+      )
+
+      localStorage.setItem("courses", JSON.stringify(next))
+
+      // notify the Classes/CourseSections page to refresh (same tab)
+      window.dispatchEvent(new Event("courses-updated"))
+    } catch {
+      // ignore
+    }
+  }, [pct, safeCourseId])
 
   function toggleDone(id: string) {
     setTasks((prev) =>
@@ -148,7 +232,7 @@ export default function CourseTasksPage() {
       ...prev,
       {
         id: crypto.randomUUID(),
-        course: courseId,
+        course: courseName,
         title: cleanTitle,
         due,
         done: false,
@@ -172,7 +256,7 @@ export default function CourseTasksPage() {
 
   return (
     <section className="p-10 min-h-screen bg-[#352D51]">
-      <Header courseId={courseId} pct={pct} />
+      <Header courseId={courseName} pct={pct} />
 
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-white text-2xl font-semibold">Tasks</h2>

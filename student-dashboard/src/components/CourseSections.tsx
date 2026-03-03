@@ -27,6 +27,23 @@ export default function CourseSections() {
     localStorage.setItem("courses", JSON.stringify(courses))
   }, [courses])
 
+  // ✅ NEW: refresh courses when tasks page updates progress
+  useEffect(() => {
+    function refreshCourses() {
+      const saved = localStorage.getItem("courses")
+      if (!saved) return
+      setCourses(JSON.parse(saved))
+    }
+
+    window.addEventListener("courses-updated", refreshCourses)
+    window.addEventListener("storage", refreshCourses)
+
+    return () => {
+      window.removeEventListener("courses-updated", refreshCourses)
+      window.removeEventListener("storage", refreshCourses)
+    }
+  }, [])
+
   const canSubmit = useMemo(() => newName.trim().length > 0, [newName])
 
   function addCourse() {
@@ -95,10 +112,7 @@ export default function CourseSections() {
           >
             <div className="flex items-center justify-between">
               <h3 className="text-2xl font-semibold">Add a course</h3>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-2xl"
-              >
+              <button onClick={() => setIsOpen(false)} className="text-2xl">
                 ×
               </button>
             </div>

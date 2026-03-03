@@ -4,11 +4,13 @@ import ReactDOM from 'react-dom/client'
 import './style.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Layout from "@/app/layout"
+
 //pages being imported
 import Dashboard from "@/pages/Dashboard"
 import Classes from "@/pages/Classes"
 import Calendar from "@/pages/Calendar"
 import Achievments from "@/pages/Achievments"
+import CourseTasksPage from "@/components/CourseTasksPage"
 
 
 export default function App() {
@@ -18,6 +20,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/classes" element={<Classes />} />
+          <Route path="/classes/:courseId" element={<CourseTasksPage />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/achievments" element={<Achievments />} />
         </Routes>
