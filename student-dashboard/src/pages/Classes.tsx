@@ -1,3 +1,9 @@
+import CourseSections from "../components/CourseSections";
+
 export default function Classes() {
-  return <h1>Classes Page</h1>;
+  return (
+    <div>
+      <CourseSections />
+    </div>
+  );
 }
