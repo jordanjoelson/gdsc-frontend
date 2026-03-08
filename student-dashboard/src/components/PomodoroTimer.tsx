@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef, type JSX } from "react";
 import '../style.css';
 
-const SIZE = 220;
-const STROKE = 18;
+const SIZE = 190;
+const STROKE = 12;
 const RADIUS = (SIZE - STROKE) / 2;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
@@ -183,7 +183,7 @@ export default function PomodoroTimer(): JSX.Element {
           </svg>
           <div style={{ position: "absolute" as const, display: "flex", flexDirection: "column" as const, alignItems: "center", gap: "6px" } as React.CSSProperties}>
             <span style={{
-              fontSize: "48px",
+              fontSize: "38px",
               fontWeight: "300",
               letterSpacing: "2px",
               lineHeight: 1,
