@@ -11,6 +11,7 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar"
 import '../style.css';
+import PomodoroTimer from './PomodoroTimer';
 import { Link } from 'react-router-dom';
 
 const navItems = [ //Each of the items in the sidebar 
@@ -35,13 +36,14 @@ export function AppSidebar() {
               {navItems.map((item) => (
                 <SidebarMenuItem key={item.label}>
                   <Link to={item.path} style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
-                    <SidebarMenuButton className="!bg-indigo-950 hover:!bg-buttonbg !py-10 text-lg font-onest font-bold flex items-center justify-center gap-2 w-full">
+                    <SidebarMenuButton className="bg-indigo-950! hover:bg-buttonbg! py-10! text-lg font-onest font-bold flex items-center justify-center gap-2 w-full">
                       {/* <span>{item.icon}</span> */}
                       <span>{item.label}</span>
                     </SidebarMenuButton>
                   </Link>
                 </SidebarMenuItem>
               ))}
+              <PomodoroTimer />
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -50,13 +52,11 @@ export function AppSidebar() {
         <SidebarMenu>
           {logout.map((item) =>(
             <SidebarMenuItem key={item.label}>
-              <SidebarMenuButton className="!bg-indigo-950 hover:!bg-indigo-900">
+              <SidebarMenuButton className="bg-indigo-950! hover:bg-indigo-900!">
                 {/* <span>{item.icon}</span> */}
                 <span>{item.label}</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
-          
-          
           ))}
         </SidebarMenu>
       </SidebarFooter>
