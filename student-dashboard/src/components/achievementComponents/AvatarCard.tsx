@@ -58,7 +58,7 @@ export default function AvatarCard({
 
         {/* Title */}
         <h3
-          className={`font-semibold ${
+          className={`font-semibold min-h-12 flex items-center justify-center ${
             unlocked ? "text-white" : "text-gray-400"
           }`}
         >
