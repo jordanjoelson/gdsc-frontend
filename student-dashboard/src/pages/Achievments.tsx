@@ -6,7 +6,7 @@ const achievements = [
     id: "1",
     title: "Baby Steps",
     description: "Complete your first task",
-    color: "#F56C6C",
+    color: "#FF848D",
     unlocked: true,
   },
   {
@@ -20,7 +20,14 @@ const achievements = [
     id: "3",
     title: "Focused",
     description: "Use Pomodoro 5 times",
-    color: "#D4E157",
+    color: "#F9FF84",
+    unlocked: true,
+  },
+  {
+    id: "4",
+    title: "Consistency",
+    description: "Complete tasks for 5 days",
+    color: "#86FF84",
     unlocked: true,
   },
   {
@@ -30,6 +37,27 @@ const achievements = [
     color: "#7ED957",
     unlocked: false,
   },
+  {
+    id: "4",
+    title: "Consistency",
+    description: "Complete tasks for 5 days",
+    color: "#7ED957",
+    unlocked: false,
+  },
+  {
+    id: "4",
+    title: "Consistency",
+    description: "Complete tasks for 5 days",
+    color: "#7ED957",
+    unlocked: false,
+  },
+  {
+    id: "4",
+    title: "Consistency",
+    description: "Complete tasks for 5 days",
+    color: "#7ED957",
+    unlocked: false,
+  }
 ]
 
 export default function Achievements() {
@@ -40,7 +68,7 @@ export default function Achievements() {
         Achievements
       </h1>
 
-      <div className="flex flex-col gap-8 mb-16 max-w-4xl">
+      <div className="flex flex-col items-center gap-8 mb-16">
 
         <StatsCard title="Current level" value="37">
           <XPProgressBar current={3000} max={5000} />
@@ -54,8 +82,8 @@ export default function Achievements() {
 
       </div>
 
-      <h2 className="text-white text-4xl font-semibold mb-8">
-        Avatars Earned
+      <h2 className="text-white text-5xl font-semibold mb-10">
+        Avatars Earned:
       </h2>
 
       <AchievementsGrid achievements={achievements} />

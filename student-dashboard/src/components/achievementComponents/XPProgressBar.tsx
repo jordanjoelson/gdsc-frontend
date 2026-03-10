@@ -8,9 +8,9 @@ export default function XPProgressBar({ current, max }: XPProgressBarProps) {
 
   return (
     <div className="w-full">
-      <div className="h-4 bg-[#1F1C3D] rounded-full overflow-hidden">
+      <div className="h-8 bg-[#1F1C3D] rounded-full overflow-hidden">
         <div
-          className="h-4 bg-gradient-to-r from-orange-300 to-[#FA706C] rounded-full"
+          className="h-8 bg-linear-to-r from-orange-300 to-[#FA706C] rounded-full"
           style={{ width: `${pct}%` }}
         />
       </div>
