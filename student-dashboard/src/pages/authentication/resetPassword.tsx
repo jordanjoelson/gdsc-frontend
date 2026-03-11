@@ -11,7 +11,7 @@ export default function Verify() {
 
   const handleConfirm = () => {
     if (password === confirmPassword && password !== "") {
-      navigate("/")
+      navigate("/dashboard")
     } else {
       alert("Passwords do not match")
     }

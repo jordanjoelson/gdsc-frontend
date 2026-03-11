@@ -15,7 +15,7 @@ import PomodoroTimer from './PomodoroTimer';
 import { Link } from 'react-router-dom';
 
 const navItems = [ //Each of the items in the sidebar 
-  {label: "Dashboard", icon: "🔥", path: "/"},
+  {label: "Dashboard", icon: "🔥", path: "/dashboard"},
   {label: "Classes", icon: "🔥", path: "/classes"},
   {label: "Calendar", icon: "🔥", path: "/calendar"},
   {label: "Achievments", icon: "🔥", path: "/achievements"},

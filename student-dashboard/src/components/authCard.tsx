@@ -19,7 +19,7 @@ export default function AuthCard({
   const navigate = useNavigate()
 
   return (
-    <div className="relative mx-auto w-112 mt-10">
+    <div className="relative mx-auto w-md mt-10">
 
       {/* Decorative corner lines */}
       <div className="absolute -top-11 h-1 w-2/3 bg-orange-300 rounded-2xl" />

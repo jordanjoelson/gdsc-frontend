@@ -13,7 +13,7 @@ export default function Login() {
 
   const handleLogin = () => {
     if (allFieldsFilled) {
-      navigate("/")
+      navigate("/dashboard")
     }
   }
 

@@ -1,8 +1,8 @@
-//Entry point of the app
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './style.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+// Entry point of the app
+import React from "react"
+import ReactDOM from "react-dom/client"
+import "./style.css"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Layout from "@/app/layout"
 
 // pages
@@ -27,31 +27,28 @@ export default function App() {
     <Router>
       <Routes>
 
-        {/* Auth Pages (no sidebar layout) */}
-        <Route path="/landing" element={<Landing />} />
+        {/* Landing page */}
+        <Route path="/" element={<Landing />} />
+
+        {/* Auth pages */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/enter-email" element={<EnterEmail />} />
         <Route path="/enter-code" element={<EnterCode />} />
         <Route path="/reset-password" element={<ResetPassword />} />
 
-        {/* Dashboard Layout Pages */}
-        <Route
-          path="/*"
-          element={
-            <Layout>
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/classes" element={<Classes />} />
-                <Route path="/classes/:courseId" element={<CourseTasksPage />} />
-                <Route path="/calendar" element={<Calendar />} />
-                <Route path="/achievements" element={<Achievements />} />
-                <Route path="/settings" element={<SettingsPage />} />
-                <Route path="/allTasks" element={<AllTasks />} />
-              </Routes>
-            </Layout>
-          }
-        />
+        {/* App pages WITH sidebar layout */}
+        <Route element={<Layout />}>
+
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/classes" element={<Classes />} />
+          <Route path="/classes/:courseId" element={<CourseTasksPage />} />
+          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/achievements" element={<Achievements />} />
+          <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/allTasks" element={<AllTasks />} />
+
+        </Route>
 
       </Routes>
     </Router>
@@ -59,8 +56,8 @@ export default function App() {
 }
 
 // DON'T TOUCH
-ReactDOM.createRoot(document.getElementById('app')!).render(
+ReactDOM.createRoot(document.getElementById("app")!).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
 )

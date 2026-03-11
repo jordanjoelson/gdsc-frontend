@@ -15,7 +15,7 @@ export default function Signup() {
 
   const handleSignup = () => {
     if (allFieldsFilled && agreed) {
-      navigate("/")
+      navigate("/dashboard")
     }
   }
 
