@@ -51,31 +51,41 @@ export default function AllTasks() {
                 {tasks[0]?.course ?? "Course"}
               </h2>
 
-              <div className="rounded-xl border-[3px] border-[#FA706C] bg-[#1F1C3D] overflow-hidden">
-                {tasks.map((task) => (
-                  <div
-                    key={task.id}
-                    className="flex items-center justify-between px-6 py-4 border-b border-white/10 last:border-none"
-                  >
-                    <div className="flex items-center gap-4">
-                      <input
-                        type="checkbox"
-                        checked={task.done}
-                        onChange={() => toggleDone(courseId, task.id)}
-                        className="h-4 w-4 accent-[#FA706C]"
-                      />
-                      <span
-                        className={`text-white ${
-                          task.done ? "line-through opacity-70" : ""
-                        }`}
-                      >
-                        {task.title}
-                      </span>
-                    </div>
+              {/* Card wrapper */}
+              <div className="relative group w-full">
 
-                    <span className="text-white/60">{task.due}</span>
-                  </div>
-                ))}
+                {/* Back card */}
+                <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-xl bg-[#FA706C]/40" />
+
+                {/* Main card */}
+                <div className="relative z-10 rounded-xl border-[3px] border-[#FA706C]/40 bg-[#1F1C3D] overflow-hidden transition-all duration-300 group-hover:-translate-y-1">
+                  {tasks.map((task) => (
+                    <div
+                      key={task.id}
+                      className="flex items-center justify-between px-6 py-4 border-b border-white/10 last:border-none"
+                    >
+                      <div className="flex items-center gap-4">
+                        <input
+                          type="checkbox"
+                          checked={task.done}
+                          onChange={() => toggleDone(courseId, task.id)}
+                          className="h-4 w-4 accent-[#FA706C]"
+                        />
+
+                        <span
+                          className={`text-white ${
+                            task.done ? "line-through opacity-70" : ""
+                          }`}
+                        >
+                          {task.title}
+                        </span>
+                      </div>
+
+                      <span className="text-white/60">{task.due}</span>
+                    </div>
+                  ))}
+                </div>
+
               </div>
             </div>
           )
