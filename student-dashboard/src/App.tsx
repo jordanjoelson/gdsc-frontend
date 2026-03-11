@@ -9,9 +9,10 @@ import Layout from "@/app/layout"
 import Dashboard from "@/pages/Dashboard"
 import Classes from "@/pages/Classes"
 import Calendar from "@/pages/Calendar"
-import Achievments from "@/pages/Achievments"
+import Achievements from "@/pages/Achievements"
 import CourseTasksPage from "@/components/CourseTasksPage"
 import SettingsPage from "@/pages/SettingsPage"
+import AllTasks from "@/pages/AllTasks"
 
 
 export default function App() {
@@ -23,8 +24,9 @@ export default function App() {
           <Route path="/classes" element={<Classes />} />
           <Route path="/classes/:courseId" element={<CourseTasksPage />} />
           <Route path="/calendar" element={<Calendar />} />
-          <Route path="/achievments" element={<Achievments />} />
+          <Route path="/achievments" element={<Achievements />} />
           <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/allTasks" element={<AllTasks />} />
         </Routes>
       </Layout>
     </Router>
