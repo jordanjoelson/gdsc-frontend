@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const menuItems = [
-  { label: "Profile", route: "/settings" },
-  { label: "Community" },
+//   { label: "Profile", route: "/settings" },
   { label: "Settings", route: "/settings" },
   { label: "Help Center" },
   { label: "Sign Out" },
