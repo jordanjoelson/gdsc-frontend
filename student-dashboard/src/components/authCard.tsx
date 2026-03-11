@@ -1,19 +1,26 @@
 import type { ReactNode } from "react"
+import { useNavigate } from "react-router-dom"
 import Logo from "@/components/icons/logo.svg"
 
 interface AuthCardProps {
   title?: string
   children: ReactNode
   showFlowers?: boolean
+  showBack?: boolean
 }
 
 export default function AuthCard({
   title,
   children,
   showFlowers = true,
+  showBack = false,
 }: AuthCardProps) {
+
+  const navigate = useNavigate()
+
   return (
     <div className="relative mx-auto w-full max-w-md mt-10">
+
       {/* Decorative corner lines */}
       <div className="absolute -top-11 h-1 w-2/3 bg-orange-300 rounded-2xl" />
       <div className="absolute -top-14 h-1 w-1/2 bg-orange-300 rounded-2xl" />
@@ -32,7 +39,8 @@ export default function AuthCard({
 
       {/* Main card */}
       <div className="relative rounded-2xl bg-[#362A5A] shadow-xl border-2 border-[#1F1C3D] overflow-hidden h-[80vh] max-h-[80vh]">
-        {/* Background flowers (optional) */}
+
+        {/* Background flowers */}
         {showFlowers && (
           <>
             <img
@@ -49,6 +57,17 @@ export default function AuthCard({
         )}
 
         <div className="relative p-8">
+
+          {/* Back button */}
+          {showBack && (
+            <button
+              onClick={() => navigate(-1)}
+              className="text-sm text-white/70 hover:text-white mb-2"
+            >
+              ← Back
+            </button>
+          )}
+
           {title && (
             <h1 className="text-center text-white text-4xl font-semibold">
               {title}
@@ -56,6 +75,7 @@ export default function AuthCard({
           )}
 
           {children}
+
         </div>
       </div>
     </div>

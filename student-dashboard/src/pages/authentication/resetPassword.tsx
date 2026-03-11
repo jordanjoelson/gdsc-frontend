@@ -11,7 +11,7 @@ export default function Verify() {
 
   const handleConfirm = () => {
     if (password === confirmPassword && password !== "") {
-      navigate("/app") // goes to dashboard
+      navigate("/")
     } else {
       alert("Passwords do not match")
     }
@@ -19,13 +19,13 @@ export default function Verify() {
 
   return (
     <Authentication>
-      <AuthCard title="Reset Password" showFlowers={false}>
-        
+      <AuthCard title="Reset Password" showBack>
+
         <div className="space-y-4 mt-10">
           <p className="text-white/60 text-center mb-10">
             Enter your new password
           </p>
-          
+
           <input
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -48,6 +48,7 @@ export default function Verify() {
           >
             Confirm
           </button>
+
         </div>
 
       </AuthCard>
