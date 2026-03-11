@@ -312,9 +312,9 @@ export default function SettingsPage() {
         {/* There are  */}
         {/* ── PERSONAL INFORMATION ── */}
         <SectionCard title="Personal Information" id="Personal Info">
-          <Row label="First Name" children={undefined} last={false}>Firstname</Row>
-          <Row label="Last Name" children={undefined} last={false}>Lastname</Row>
-          <Row label="Email" children={undefined} last={false}>Email</Row>
+          <Row label="First Name" last={false}>Firstname</Row>
+          <Row label="Last Name" last={false}>Lastname</Row>
+          <Row label="Email" last={false}>Email</Row>
           <SelectRow label="Pronouns" value="He/Him" last={false} />
           <SelectRow label="Date of Birth" value="DD-00-2xxx" last />
         </SectionCard>
@@ -333,7 +333,7 @@ export default function SettingsPage() {
 
         {/* ── SECURITY ── */}
         <SectionCard title="Security" id="Security">
-          <Row label="Change Password" children={undefined} last={false}>
+          <Row label="Change Password" last={false}>
             <span style={{ letterSpacing: "4px" }}>••••••••</span>
           </Row>
           <ToggleRow label="Two-Factor Authentication" last={false} />

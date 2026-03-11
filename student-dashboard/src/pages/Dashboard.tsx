@@ -1,5 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Dashboard() {
-  const navigate = require('react-router-dom').useNavigate();
+  const navigate = useNavigate();
   return (
     <div>
       <h1>Dashboard</h1>
