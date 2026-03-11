@@ -1,5 +1,5 @@
 import Authentication from "./auth"
-import AuthCard from "./authCard"
+import AuthCard from "../../components/authCard"
 import { Link } from "react-router-dom"
 
 export default function SignupOrLogin() {

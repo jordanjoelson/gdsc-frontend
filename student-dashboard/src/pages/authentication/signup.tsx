@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Authentication from "./auth"
-import AuthCard from "./authCard"
+import AuthCard from "../../components/authCard"
 import { useNavigate } from "react-router-dom"
 
 export default function Signup() {

@@ -10,7 +10,7 @@ import Dashboard from "@/pages/Dashboard"
 import Classes from "@/pages/Classes"
 import Calendar from "@/pages/Calendar"
 import Achievements from "@/pages/Achievements"
-import CourseTasksPage from "@/components/CourseTasksPage"
+import CourseTasksPage from "@/pages/CourseTasksPage"
 import SettingsPage from "@/pages/SettingsPage"
 import AllTasks from "@/pages/AllTasks"
 

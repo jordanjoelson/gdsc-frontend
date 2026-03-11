@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import Authentication from "./auth"
-import AuthCard from "./authCard"
+import AuthCard from "../../components/authCard"
 import { useNavigate } from "react-router-dom"
 
 export default function Login() {

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import Authentication from "./auth"
-import AuthCard from "./authCard"
+import AuthCard from "../../components/authCard"
 
 export default function Verify() {
 
