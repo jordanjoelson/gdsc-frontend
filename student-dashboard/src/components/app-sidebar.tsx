@@ -27,7 +27,7 @@ const logout = [
 export function AppSidebar() {
   return (
     //The sidebar is the outside wrapper. The className here is the color of the sidebar
-    <Sidebar className="bg-[#1F1C3D] text-white"> 
+    <Sidebar className="bg-[#1F1C3D] text-white border-none"> 
       <SidebarContent className="flex justify-center">
         <SidebarGroup className="w-full">
           <SidebarGroupLabel></SidebarGroupLabel>
