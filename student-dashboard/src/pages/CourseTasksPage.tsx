@@ -105,7 +105,7 @@ function ProgressMiniCard({ pct }: { pct: number }) {
 
 function Header({ courseId, pct }: { courseId: string; pct: number }) {
   return (
-    <div className="relative w-full h-70 mb-15">
+    <div className="relative w-full h-70 mb-15 -mt-7">
       <div className="absolute -left-4 top-5 h-4/5 w-2 bg-orange-300 rounded-full" />
       <div className="absolute left-10 -top-4 h-2 w-7/8 bg-orange-300 rounded-full" />
       <div className="absolute inset-0 translate-x-5 translate-y-5 rounded-2xl border-[3px] border-[#FA706C]/70 bg-[#1F1C3D] z-0" />

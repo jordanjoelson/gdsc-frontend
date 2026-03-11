@@ -13,10 +13,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <SidebarProvider>
       {!hideSidebar && <AppSidebar />}
       <main className="flex-1">
-        <div className="flex items-center justify-end gap-4 p-4 bg-[#352D51] shadow-none border-none" style={{ boxShadow: "none", border: "none" }}>
+        <div
+          className="flex items-center justify-end gap-4 p-4 bg-[#352D51]"
+          style={{ boxShadow: "none", border: "none" }}
+        >
           <UserDropdown />
         </div>
-        {children}
+
+        {/* THIS is where routed pages render */}
+        <Outlet />
+
       </main>
     </SidebarProvider>
   )
