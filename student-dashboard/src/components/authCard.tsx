@@ -19,7 +19,7 @@ export default function AuthCard({
   const navigate = useNavigate()
 
   return (
-    <div className="relative mx-auto w-full max-w-md mt-10">
+    <div className="relative mx-auto w-112 mt-10">
 
       {/* Decorative corner lines */}
       <div className="absolute -top-11 h-1 w-2/3 bg-orange-300 rounded-2xl" />
@@ -38,7 +38,7 @@ export default function AuthCard({
       <div className="absolute inset-0 -translate-x-7 -translate-y-7 rounded-2xl bg-[#1F1C3D]" />
 
       {/* Main card */}
-      <div className="relative rounded-2xl bg-[#362A5A] shadow-xl border-2 border-[#1F1C3D] overflow-hidden h-[80vh] max-h-[80vh]">
+      <div className="relative rounded-2xl bg-[#362A5A] shadow-xl border-2 border-[#1F1C3D] overflow-hidden h-145">
 
         {/* Background flowers */}
         {showFlowers && (
@@ -56,25 +56,29 @@ export default function AuthCard({
           </>
         )}
 
-        <div className="relative p-8">
+        <div className="relative p-8 h-full flex flex-col">
 
           {/* Back button */}
           {showBack && (
             <button
               onClick={() => navigate(-1)}
-              className="text-sm text-white/70 hover:text-white mb-2"
+              className="text-sm text-white/70 hover:text-white mb-2 self-start"
             >
               ← Back
             </button>
           )}
 
+          {/* Title */}
           {title && (
-            <h1 className="text-center text-white text-4xl font-semibold">
+            <h1 className="text-center text-white text-5xl font-semibold mt-3">
               {title}
             </h1>
           )}
 
-          {children}
+          {/* Content */}
+          <div className="flex-1">
+            {children}
+          </div>
 
         </div>
       </div>
