@@ -144,7 +144,7 @@ type SectionCardProps = {
 };
 function SectionCard({ title, id, children }: SectionCardProps) {
   return (
-    <div id={id} style={{ marginBottom: "36px" }}>
+    <div id={id} style={{ marginBottom: "36px", width: "100%" }}>
       <h2 style={{
         fontSize: "22px", fontWeight: "600", color: C.text,
         marginBottom: "14px", fontFamily: FONT,
@@ -155,6 +155,7 @@ function SectionCard({ title, id, children }: SectionCardProps) {
         borderRadius: "16px",
         padding: "0 24px",
         boxShadow: `8px 8px 0px ${C.cardShadow}`, // ← drop shadow only
+        width: "100%",
       }}>
         {children}
       </div>
@@ -266,7 +267,7 @@ export default function SettingsPage() {
       {/* ─────────────────────────────────────
           MAIN CONTENT AREA
       ───────────────────────────────────── */}
-      <div style={{ flex: 1, padding: "40px 48px", maxWidth: "780px", overflowY: "auto" }}>
+      <div style={{ flex: 1, padding: "40px 48px", overflowY: "auto" }}>
 
         {/* ── PROFILE HEADER ── */}
         <div style={{ display: "flex", alignItems: "center", gap: "28px", marginBottom: "44px" }}>
