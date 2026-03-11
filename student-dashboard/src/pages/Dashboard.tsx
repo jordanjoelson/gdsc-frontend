@@ -1,5 +1,18 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Dashboard() {
+  const navigate = useNavigate();
   return (
-    <h1>Dashboard</h1>
+    <div>
+      <h1>Dashboard</h1>
+      <button
+        style={{
+          background: 'black', color: 'white', padding: '12px 24px', borderRadius: '8px', border: 'none', fontSize: '16px', marginTop: '24px', cursor: 'pointer'
+        }}
+        onClick={() => navigate('/settings')}
+      >
+        Go to Settings
+      </button>
+    </div>
   );
 }

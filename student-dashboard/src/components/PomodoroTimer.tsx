@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef, type JSX } from "react";
 import '../style.css';
 
-const SIZE = 190;
-const STROKE = 12;
+const SIZE = 220;
+const STROKE = 18;
 const RADIUS = (SIZE - STROKE) / 2;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
@@ -45,7 +45,11 @@ function Btn({ color, onClick, children, small, borderRadius }: BtnProps & { bor
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        padding: small ? "9px 16px" : "11px 26px",
+        width: "60px",
+        height: "44px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
         border: "none",
         borderRadius: borderRadius ?? "12px",
         fontSize: small ? "13px" : "15px",
@@ -136,6 +140,7 @@ export default function PomodoroTimer(): JSX.Element {
 
   return (
     <div style={{
+      background: "transparent",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -144,12 +149,14 @@ export default function PomodoroTimer(): JSX.Element {
       <div style={{
         background: "transparent",
         borderRadius: "28px",
+        // padding: "40px 8px",
         display: "flex",
         flexDirection: "column" as const,
         alignItems: "center",
         gap: "24px",
         boxShadow: "none",
         border: "none",
+        // minWidth: "320px",
       } as React.CSSProperties}>
 
         {/* Session label */}
@@ -183,7 +190,7 @@ export default function PomodoroTimer(): JSX.Element {
           </svg>
           <div style={{ position: "absolute" as const, display: "flex", flexDirection: "column" as const, alignItems: "center", gap: "6px" } as React.CSSProperties}>
             <span style={{
-              fontSize: "38px",
+              fontSize: "48px",
               fontWeight: "300",
               letterSpacing: "2px",
               lineHeight: 1,

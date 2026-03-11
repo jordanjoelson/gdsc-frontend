@@ -11,6 +11,7 @@ import Classes from "@/pages/Classes"
 import Calendar from "@/pages/Calendar"
 import Achievments from "@/pages/Achievments"
 import CourseTasksPage from "@/components/CourseTasksPage"
+import SettingsPage from "@/pages/SettingsPage"
 
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/classes/:courseId" element={<CourseTasksPage />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/achievments" element={<Achievments />} />
+          <Route path="/settings" element={<SettingsPage />} />
         </Routes>
       </Layout>
     </Router>

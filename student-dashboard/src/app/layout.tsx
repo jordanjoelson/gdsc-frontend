@@ -1,4 +1,5 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { SidebarProvider } from "@/components/ui/sidebar"
+import { UserDropdown } from "@/components/UserDropdown"
 import { AppSidebar } from "@/components/app-sidebar"
 
 
@@ -10,8 +11,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <SidebarProvider>
       <AppSidebar />
       <main className="flex-1">
-        <div className="flex items-center gap-4 p-4 border-b">
-          <SidebarTrigger />
+        <div className="flex items-center justify-end gap-4 p-4 bg-[#352D51] shadow-none border-none" style={{ boxShadow: "none", border: "none" }}>
+          <UserDropdown />
         </div>
         {children}
       </main>
