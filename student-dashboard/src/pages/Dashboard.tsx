@@ -40,73 +40,87 @@ export default function Dashboard() {
     }
   }, [])
 
-  // Flatten tasks
   const allTasks = Object.values(tasksByCourse).flat()
 
-  // Upcoming tasks
   const upcomingTasks = allTasks
     .filter((task) => !task.done)
     .sort((a, b) => new Date(a.due).getTime() - new Date(b.due).getTime())
-    .slice(0, 5)
 
   return (
-    <section className="p-10 bg-[#352D51] min-h-screen">
+    <section className="p-10 min-h-screen bg-[#352D51]">
 
       {/* Welcome */}
-      <h1 className="text-white text-6xl font-bold mb-10 -mt-10">
+      <h1 className="text-white text-6xl font-bold mb-12 -mt-15">
         Welcome, User!
       </h1>
 
-      {/* Upcoming Tasks */}
+      {/* UPCOMING TASKS */}
       <div className="mb-16">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-white text-3xl font-semibold">Upcoming Tasks</h2>
-        </div>
+        <h2 className="text-white text-4xl font-semibold mb-14">
+          Upcoming Tasks
+        </h2>
 
-        <div className="relative group max-w-xl">
+        <div className="relative group w-115 ml-8">
 
-          <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-xl bg-[#FA706C]/40" />
+          {/* orange line horizontal */}
+          <div className="absolute -top-8 left-7 w-4/5 h-2 bg-orange-300 rounded-full z-0"></div>
 
-          <div className="relative z-10 rounded-xl border-[3px] border-[#FA706C]/40 bg-[#1F1C3D] overflow-hidden">
+          {/* orange line vertical */}
+          <div className="absolute -left-8 top-4 w-2 h-4/5 bg-orange-300 rounded-full" />
+          
+          {/* Back card */}
+          <div className="absolute inset-0 -translate-x-4 -translate-y-4 rounded-xl bg-[#1F1C3D]" />
+
+          {/* Scrollable card */}
+          <div className="scrollbar relative z-10 h-72 overflow-y-auto rounded-xl bg-[#140D2A]">
 
             {upcomingTasks.map((task) => (
               <div
                 key={task.id}
-                className="flex items-center justify-between px-6 py-4 border-b border-white/10 last:border-none"
+                className="flex items-center justify-between px-8 py-5 border-b border-white/10 last:border-none"
               >
-                <span className="text-white">{task.title}</span>
-                <span className="text-white/60">{task.due}</span>
+                <span className="text-white text-lg">
+                  {task.title}
+                </span>
+
+                <span className="text-white/60">
+                  {task.due}
+                </span>
               </div>
             ))}
 
             {upcomingTasks.length === 0 && (
-              <div className="px-6 py-4 text-white/60">
+              <div className="px-8 py-6 text-white/60">
                 No upcoming tasks
               </div>
             )}
+
           </div>
         </div>
       </div>
 
-      {/* Courses */}
+      {/* COURSES */}
       <div>
-        <h2 className="text-white text-3xl font-semibold mb-8">Courses</h2>
+        <h2 className="text-white text-4xl font-semibold mb-8">
+          Courses
+        </h2>
 
-        <div className="grid gap-8 grid-cols-[repeat(auto-fit,minmax(320px,1fr))]">
+        <div className="grid gap-10 grid-cols-[repeat(auto-fit,minmax(320px,1fr))]">
 
           {courses.map((course) => (
-            <div
-              key={course.id}
-              className="relative group"
-            >
+            <div key={course.id} className="relative group">
+
+              {/* back shadow */}
               <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-xl bg-[#1F1C3D]" />
 
+              {/* main card */}
               <div className="relative z-10 rounded-xl bg-[#3B3260] p-6 shadow-lg">
 
-                <h3 className="text-white text-xl mb-4">
+                <h3 className="text-white text-2xl mb-4">
                   {course.name}
                 </h3>
 
+                {/* progress bar */}
                 <div className="w-full h-4 rounded-full bg-[#1F1C3D] overflow-hidden">
                   <div
                     className="h-full bg-[#FA706C]"
@@ -117,12 +131,14 @@ export default function Dashboard() {
                 <p className="text-right text-white/70 mt-2">
                   {course.progress}%
                 </p>
+
               </div>
             </div>
           ))}
 
         </div>
       </div>
+
     </section>
   )
 }

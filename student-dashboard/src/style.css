@@ -6,3 +6,22 @@
     --color-buttonbg: #fa706c;
     --font-family-onest: "Onest", ui-sans-serif, system-ui, sans-serif;
 }
+
+/* Dashboard scroll styling */
+.scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: #1F1C3D;
+  border-radius: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #462c80;
+  border-radius: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #ff8a86;
+}
