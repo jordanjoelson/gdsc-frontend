@@ -36,7 +36,10 @@ export function AppSidebar() {
               {navItems.map((item) => (
                 <SidebarMenuItem key={item.label}>
                   <Link to={item.path} style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
-                    <SidebarMenuButton className="bg-indigo-950! hover:bg-buttonbg! py-10! text-lg font-onest font-bold flex items-center justify-center gap-2 w-full">
+                    <SidebarMenuButton
+                      variant="default"
+                      className="text-lg font-onest font-bold flex items-center justify-center gap-2 w-full py-10"
+                    >
                       {/* <span>{item.icon}</span> */}
                       <span>{item.label}</span>
                     </SidebarMenuButton>
@@ -52,7 +55,10 @@ export function AppSidebar() {
         <SidebarMenu>
           {logout.map((item) =>(
             <SidebarMenuItem key={item.label}>
-              <SidebarMenuButton className="bg-indigo-950! hover:bg-indigo-900!">
+              <SidebarMenuButton
+                variant="default"
+                className="font-onest font-bold flex items-center justify-center gap-2 w-full py-10"
+              >
                 {/* <span>{item.icon}</span> */}
                 <span>{item.label}</span>
               </SidebarMenuButton>
