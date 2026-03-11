@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import CourseCard from "@/components/CourseCard"
 
 type Task = {
   id: string
@@ -56,87 +58,96 @@ export default function Dashboard() {
 
       {/* UPCOMING TASKS */}
       <div className="mb-16">
-        <h2 className="text-white text-4xl font-semibold mb-14">
-          Upcoming Tasks
-        </h2>
 
-        <div className="relative group w-115 ml-8">
+        {/* Title + View All */}
+        <div className="flex items-center justify-between w-120 ml-10 mb-13">
+          <h2 className="text-white text-4xl font-semibold">
+            Upcoming Tasks
+          </h2>
+
+          <Link
+            to="/allTasks"
+            className="text-white/60 hover:text-orange-300 transition"
+          >
+            View all
+          </Link>
+        </div>
+
+        <div className="relative group w-120 ml-10">
 
           {/* orange line horizontal */}
           <div className="absolute -top-8 left-7 w-4/5 h-2 bg-orange-300 rounded-full z-0"></div>
 
           {/* orange line vertical */}
           <div className="absolute -left-8 top-4 w-2 h-4/5 bg-orange-300 rounded-full" />
-          
+
           {/* Back card */}
           <div className="absolute inset-0 -translate-x-4 -translate-y-4 rounded-xl bg-[#1F1C3D]" />
 
-          {/* Scrollable card */}
-          <div className="scrollbar relative z-10 h-72 overflow-y-auto rounded-xl bg-[#140D2A]">
+          {/* Outer card */}
+          <div className="relative z-10 rounded-xl bg-[#140D2A] p-3">
 
-            {upcomingTasks.map((task) => (
-              <div
-                key={task.id}
-                className="flex items-center justify-between px-8 py-5 border-b border-white/10 last:border-none"
-              >
-                <span className="text-white text-lg">
-                  {task.title}
-                </span>
+            {/* Scroll container */}
+            <div className="scrollbar h-64 overflow-y-auto rounded-lg">
 
-                <span className="text-white/60">
-                  {task.due}
-                </span>
-              </div>
-            ))}
+              {upcomingTasks.map((task) => (
+                <div
+                  key={task.id}
+                  className="flex items-center justify-between px-8 py-5 border-b border-white/10 last:border-none"
+                >
+                  <span className="text-white text-lg">
+                    {task.title}
+                  </span>
 
-            {upcomingTasks.length === 0 && (
-              <div className="px-8 py-6 text-white/60">
-                No upcoming tasks
-              </div>
-            )}
+                  <span className="text-white/60">
+                    {task.due}
+                  </span>
+                </div>
+              ))}
 
+              {upcomingTasks.length === 0 && (
+                <div className="px-8 py-6 text-white/60">
+                  No upcoming tasks
+                </div>
+              )}
+
+            </div>
           </div>
         </div>
       </div>
 
       {/* COURSES */}
-      <div>
-        <h2 className="text-white text-4xl font-semibold mb-8">
-          Courses
-        </h2>
+      <div className="mt-10">
 
-        <div className="grid gap-10 grid-cols-[repeat(auto-fit,minmax(320px,1fr))]">
+        {/* Title + View all */}
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-white text-4xl font-semibold">
+            Courses
+          </h2>
+
+          <Link
+            to="/classes"
+            className="text-white/60 hover:text-orange-300 transition"
+          >
+            View all
+          </Link>
+        </div>
+
+        {/* Horizontal scroll container */}
+        <div className="scrollbar flex gap-10 overflow-x-auto pb-6">
 
           {courses.map((course) => (
-            <div key={course.id} className="relative group">
-
-              {/* back shadow */}
-              <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-xl bg-[#1F1C3D]" />
-
-              {/* main card */}
-              <div className="relative z-10 rounded-xl bg-[#3B3260] p-6 shadow-lg">
-
-                <h3 className="text-white text-2xl mb-4">
-                  {course.name}
-                </h3>
-
-                {/* progress bar */}
-                <div className="w-full h-4 rounded-full bg-[#1F1C3D] overflow-hidden">
-                  <div
-                    className="h-full bg-[#FA706C]"
-                    style={{ width: `${course.progress}%` }}
-                  />
-                </div>
-
-                <p className="text-right text-white/70 mt-2">
-                  {course.progress}%
-                </p>
-
-              </div>
+            <div key={course.id} className="min-w-90">
+              <CourseCard
+                id={course.id}
+                name={course.name}
+                progress={course.progress}
+              />
             </div>
           ))}
 
         </div>
+
       </div>
 
     </section>
