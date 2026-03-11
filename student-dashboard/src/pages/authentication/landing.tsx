@@ -4,7 +4,6 @@ import { Link } from "react-router-dom"
 
 // import logos
 import Logo from "../../components/icons/logo.svg"
-import BlackLogo from "../../components/icons/blackLogo.svg"
 
 export default function SignupOrLogin() {
   return (
@@ -14,18 +13,10 @@ export default function SignupOrLogin() {
         {/* Logo */}
         <div className="relative w-80 mx-auto my-8 -mb-1 -mt-1">
 
-          {/* Black shadow logo (behind) */}
-          <img
-            src={BlackLogo}
-            alt=""
-            className="absolute inset-0 m-auto w-full translate-y-2 z-0"
-          />
-
-          {/* Purple main logo */}
           <img
             src={Logo}
             alt="Main Logo"
-            className="relative w-full z-10"
+            className="w-full drop-shadow-[0_6px_0_rgba(0,0,0,0.4)]"
           />
 
         </div>
