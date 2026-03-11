@@ -18,7 +18,7 @@ const navItems = [ //Each of the items in the sidebar
   {label: "Dashboard", icon: "🔥", path: "/"},
   {label: "Classes", icon: "🔥", path: "/classes"},
   {label: "Calendar", icon: "🔥", path: "/calendar"},
-  {label: "Achievments", icon: "🔥", path: "/achievments"},
+  {label: "Achievments", icon: "🔥", path: "/achievements"},
 ]
 const logout = [
   {label: "Logout", icon:"🔥"}
