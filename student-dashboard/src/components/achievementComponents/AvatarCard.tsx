@@ -14,7 +14,11 @@ export default function AvatarCard({
   unlocked,
 }: AvatarCardProps) {
   return (
-    <div className="group relative w-45 transition-all duration-300 hover:-translate-y-2">
+    <div
+      className={`group relative w-45 transition-all duration-300 ml-2 ${
+        unlocked ? "hover:-translate-y-2" : ""
+      }`}
+    >
 
       {/* Coral offset card (only if unlocked) */}
       {unlocked && (

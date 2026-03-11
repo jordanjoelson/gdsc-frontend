@@ -14,7 +14,7 @@ type AchievementsGridProps = {
 
 export default function AchievementsGrid({ achievements }: AchievementsGridProps) {
   return (
-    <div className="grid gap-15 grid-cols-[repeat(auto-fit,minmax(220px,max-content))] justify-center gap-x-10">
+    <div className="max-w-6xl mx-auto grid grid-cols-[repeat(auto-fit,220px)] justify-center gap-x-8 gap-y-15">
       {achievements.map((a) => (
         <AvatarCard
           key={a.id}

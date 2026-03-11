@@ -92,7 +92,7 @@ export default function Achievements() {
   return (
     <section className="p-10 min-h-screen bg-[#352D51]">
 
-      <h1 className="text-white text-6xl font-bold mb-13">
+      <h1 className="text-white text-6xl font-bold -mt-15 mb-13">
         Achievements
       </h1>
 
@@ -107,19 +107,23 @@ export default function Achievements() {
           title="Tasks completed"
           value="113"
           subtitle={
-            <>
-              <div>
-                <p>Next level goal:</p>
-                <p>23 tasks left</p>
-                <p>Complete more tasks to reach level 38</p>
-              </div>
-            </>
+            <div className="text-white text-right space-y-1">
+              <p className="text-sm font-semibold">Next level goal:</p>
+
+              <p className="text-2xl font-bold">
+                <span className="text-red-400">23</span> tasks left
+              </p>
+
+              <p className="text-sm text-white/70">
+                Complete more tasks to reach level 38
+              </p>
+            </div>
           }
         />
 
       </div>
 
-      <h2 className="text-white text-5xl font-semibold mb-13">
+      <h2 className="text-white text-5xl font-semibold mb-15 -mt-8">
         Avatars Earned:
       </h2>
 
