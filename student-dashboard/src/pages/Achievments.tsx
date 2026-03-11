@@ -6,84 +6,84 @@ const achievements = [
     id: "1",
     title: "Baby Steps",
     description: "Complete your first task",
-    color: "#FF848D",
+    color: "#FF4444",
     unlocked: true,
   },
   {
     id: "2",
     title: "Getting the hang of it",
     description: "Complete 10 tasks",
-    color: "#F0B27A",
+    color: "#FF9244",
     unlocked: true,
   },
   {
     id: "3",
     title: "Focused",
     description: "Use Pomodoro timer 5 times",
-    color: "#F9FF84",
+    color: "#FFE65B",
     unlocked: true,
   },
   {
     id: "4",
     title: "On a roll",
     description: "Complete 20 tasks",
-    color: "#86FF84",
+    color: "#7FFF79",
     unlocked: true,
   },
   {
     id: "5",
     title: "Consistency",
     description: "Complete tasks for 5 days in a row",
-    color: "#84C2FF",
+    color: "#79F4FF",
     unlocked: true,
   },
   {
     id: "6",
     title: "Deep Focus",
     description: "Use the Pomodoro timer for 20 times",
-    color: "#7ED957",
+    color: "#5BFFA2",
     unlocked: false,
   },
   {
     id: "7",
     title: "Momentum",
     description: "Complete 3 tasks in one day",
-    color: "#7ED957",
+    color: "#44FF88",
     unlocked: false,
   },
   {
     id: "8",
     title: "Focus Master",
     description: "Complete 5 tasks in one session",
-    color: "#7ED957",
+    color: "#44ECFF",
     unlocked: false,
   },
   {
     id: "9",
     title: "Task crusher",
     description: "Complete 50 tasks",
-    color: "#7ED957",
+    color: "#4479FF",
     unlocked: false,
   },
   {
     id: "10",
     title: "Streak Builder",
     description: "Complete tasks for 10 days in a row",
-    color: "#7ED957",
+    color: "#2E1BFF",
     unlocked: false,
   },
   {
     id: "11",
     title: "Marathon runner",
     description: "Complete 100 tasks",
-    color: "#7ED957",
+    color: "#BF1BFF",
     unlocked: false,
   },
   {
     id: "12",
     title: "Legend",
     description: "Complete 200 tasks",
-    color: "#7ED957",
+    color: "#FFA7AD",
     unlocked: false
   }
 ]
@@ -103,9 +103,18 @@ export default function Achievements() {
         </StatsCard>
 
         <StatsCard
+          layout="split"
           title="Tasks completed"
           value="113"
-          subtitle="23 tasks left until level 38"
+          subtitle={
+            <>
+              <div>
+                <p>Next level goal:</p>
+                <p>23 tasks left</p>
+                <p>Complete more tasks to reach level 38</p>
+              </div>
+            </>
+          }
         />
 
       </div>
