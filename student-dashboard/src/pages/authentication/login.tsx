@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import Authentication from "./Authentication"
+import Authentication from "./auth"
 import AuthCard from "./authCard"
 import { useNavigate } from "react-router-dom"
 

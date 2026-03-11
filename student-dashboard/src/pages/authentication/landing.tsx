@@ -1,4 +1,4 @@
-import Authentication from "./Authentication"
+import Authentication from "./auth"
 import AuthCard from "./authCard"
 import { Link } from "react-router-dom"
 
