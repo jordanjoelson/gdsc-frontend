@@ -15,13 +15,10 @@ import PomodoroTimer from './PomodoroTimer';
 import { Link } from 'react-router-dom';
 
 const navItems = [ //Each of the items in the sidebar 
-  {label: "Dashboard", icon: "🔥", path: "/dashboard"},
-  {label: "Classes", icon: "🔥", path: "/classes"},
-  {label: "Calendar", icon: "🔥", path: "/calendar"},
-  {label: "Achievments", icon: "🔥", path: "/achievements"},
-]
-const logout = [
-  {label: "Logout", icon:"🔥"}
+  {label: "Dashboard", path: "/dashboard"},
+  {label: "Classes", path: "/classes"},
+  {label: "Calendar", path: "/calendar"},
+  {label: "Achievments", path: "/achievements"},
 ]
 
 export function AppSidebar() {
@@ -40,7 +37,6 @@ export function AppSidebar() {
                       variant="default"
                       className="text-lg font-onest font-bold flex items-center justify-center gap-2 w-full py-10"
                     >
-                      {/* <span>{item.icon}</span> */}
                       <span>{item.label}</span>
                     </SidebarMenuButton>
                   </Link>
@@ -53,17 +49,6 @@ export function AppSidebar() {
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>
-          {logout.map((item) =>(
-            <SidebarMenuItem key={item.label}>
-              <SidebarMenuButton
-                variant="default"
-                className="font-onest font-bold flex items-center justify-center gap-2 w-full py-10"
-              >
-                {/* <span>{item.icon}</span> */}
-                <span>{item.label}</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
         </SidebarMenu>
       </SidebarFooter>
     </Sidebar>

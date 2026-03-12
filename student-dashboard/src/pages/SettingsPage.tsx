@@ -238,6 +238,28 @@ export default function SettingsPage() {
         height: "100vh", flexShrink: 0,
         borderRight: `1px solid ${C.rowBorder}`,
       }}>
+        {/* Back button */}
+        <button
+          onClick={() => window.history.back()}
+          style={{
+            marginLeft: "24px",
+            marginBottom: "18px",
+            padding: "6px 16px",
+            borderRadius: "8px",
+            border: `1px solid ${C.accent}`,
+            background: "transparent",
+            color: C.text,
+            fontSize: "14px",
+            fontWeight: "600",
+            cursor: "pointer",
+            fontFamily: FONT,
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+          }}
+        >
+          <span style={{ fontSize: "18px", lineHeight: 1 }}>←</span> Back
+        </button>
         <div style={{ padding: "0 24px 8px", fontSize: "26px", fontWeight: "700", color: C.text, fontFamily: FONT }}>
           Settings
         </div>
