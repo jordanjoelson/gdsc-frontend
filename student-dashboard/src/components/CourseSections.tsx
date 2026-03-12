@@ -23,11 +23,12 @@ export default function CourseSections() {
   const [newName, setNewName] = useState("")
   const [error, setError] = useState<string | null>(null)
 
+  // save courses whenever they change
   useEffect(() => {
     localStorage.setItem("courses", JSON.stringify(courses))
   }, [courses])
 
-  // refresh courses when tasks page updates progress
+  // refresh courses when tasks update progress
   useEffect(() => {
     function refreshCourses() {
       const saved = localStorage.getItem("courses")
@@ -54,26 +55,34 @@ export default function CourseSections() {
       return
     }
 
-    setCourses((prev) => [
-      ...prev,
+    const updatedCourses = [
+      ...courses,
       {
         id: crypto.randomUUID(),
         name,
         progress: 0,
       },
-    ])
+    ]
+
+    setCourses(updatedCourses)
+    localStorage.setItem("courses", JSON.stringify(updatedCourses))
 
     setNewName("")
     setError(null)
     setIsOpen(false)
   }
 
-  // ✅ FIXED DELETE FUNCTION
+  // FIXED delete logic
   function deleteCourse(id: string) {
     if (!window.confirm("Are you sure you want to delete this course?")) return
 
-    // remove course from state
-    setCourses((prev) => prev.filter((c) => c.id !== id))
+    const updatedCourses = courses.filter((c) => c.id !== id)
+
+    // update state
+    setCourses(updatedCourses)
+
+    // update localStorage immediately
+    localStorage.setItem("courses", JSON.stringify(updatedCourses))
 
     // remove tasks tied to that course
     const raw = localStorage.getItem("tasksByCourse")
@@ -83,13 +92,15 @@ export default function CourseSections() {
       localStorage.setItem("tasksByCourse", JSON.stringify(tasks))
     }
 
-    // notify other pages
+    // notify other pages to refresh
     window.dispatchEvent(new Event("courses-updated"))
   }
 
   return (
     <section className="min-h-screen bg-[#352D51] px-10 py-6">
-      <h2 className="text-6xl font-semibold mb-4 -mt-12 text-white">Courses</h2>
+      <h2 className="text-6xl font-semibold mb-4 -mt-12 text-white">
+        Courses
+      </h2>
 
       <div className="mt-15 mb-12 grid gap-18 grid-cols-[repeat(auto-fit,minmax(360px,1fr))]">
         {courses.map((c) => (
@@ -102,7 +113,7 @@ export default function CourseSections() {
           />
         ))}
 
-        {/* Add Button */}
+        {/* Add Course Button */}
         <button
           type="button"
           onClick={() => setIsOpen(true)}
