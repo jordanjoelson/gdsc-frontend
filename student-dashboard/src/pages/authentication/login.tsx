@@ -19,7 +19,7 @@ export default function Login() {
 
   return (
     <Authentication>
-      <AuthCard title="Cosmo" showBack>
+      <AuthCard title="Log in" showBack>
 
         {/* Inputs */}
         <div className="space-y-3">
