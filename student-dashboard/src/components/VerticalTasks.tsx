@@ -39,7 +39,7 @@ export default function VerticalTasks({ upcomingTasks }: Props) {
 
         <div className="relative z-10 rounded-xl bg-[#140D2A] p-3">
 
-          <div className="scrollbar h-64 overflow-y-auto rounded-lg">
+          <div className="scrollbar h-95 overflow-y-auto rounded-lg">
 
             {upcomingTasks.map((task) => (
               <div
