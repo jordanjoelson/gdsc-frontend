@@ -6,6 +6,7 @@ type Achievement = {
   description: string
   color: string
   unlocked: boolean
+  icon?: string
 }
 
 type AchievementsGridProps = {
@@ -22,6 +23,7 @@ export default function AchievementsGrid({ achievements }: AchievementsGridProps
           description={a.description}
           color={a.color}
           unlocked={a.unlocked}
+          icon={a.icon}
         />
       ))}
     </div>

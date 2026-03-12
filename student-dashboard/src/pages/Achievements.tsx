@@ -1,6 +1,13 @@
 import StatsCard from "../components/achievementComponents/StatsCard"
 import XPProgressBar from "../components/achievementComponents/XPProgressBar"
 import AchievementsGrid from "../components/achievementComponents/AchievementsGrid"
+
+import flower1 from "../components/achievementComponents/icons/flower1.svg"
+import flower2 from "../components/achievementComponents/icons/flower2.svg"
+import flower3 from "../components/achievementComponents/icons/flower3.svg"
+import flower4 from "../components/achievementComponents/icons/flower4.svg"
+import flower5 from "../components/achievementComponents/icons/flower5.svg"
+
 const achievements = [
   {
     id: "1",
@@ -8,6 +15,7 @@ const achievements = [
     description: "Complete your first task",
     color: "#FF4444",
     unlocked: true,
+    icon: flower1,
   },
   {
     id: "2",
@@ -15,6 +23,7 @@ const achievements = [
     description: "Complete 10 tasks",
     color: "#FF9244",
     unlocked: true,
+    icon: flower2,
   },
   {
     id: "3",
@@ -22,6 +31,7 @@ const achievements = [
     description: "Use Pomodoro timer 5 times",
     color: "#FFE65B",
     unlocked: true,
+    icon: flower3,
   },
   {
     id: "4",
@@ -29,6 +39,7 @@ const achievements = [
     description: "Complete 20 tasks",
     color: "#7FFF79",
     unlocked: true,
+    icon: flower4,
   },
   {
     id: "5",
@@ -36,6 +47,7 @@ const achievements = [
     description: "Complete tasks for 5 days in a row",
     color: "#79F4FF",
     unlocked: true,
+    icon: flower5,
   },
   {
     id: "6",

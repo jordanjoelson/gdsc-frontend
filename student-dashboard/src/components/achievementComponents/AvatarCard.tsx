@@ -5,6 +5,7 @@ type AvatarCardProps = {
   description: string
   color: string
   unlocked: boolean
+  icon?: string
 }
 
 export default function AvatarCard({
@@ -12,6 +13,7 @@ export default function AvatarCard({
   description,
   color,
   unlocked,
+  icon,
 }: AvatarCardProps) {
   return (
     <div
@@ -19,15 +21,14 @@ export default function AvatarCard({
         unlocked ? "hover:-translate-y-2" : ""
       }`}
     >
-
       {/* Coral offset card (only if unlocked) */}
       {unlocked && (
         <>
-        <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-2xl border-[3px] border-[#FA706C] bg-[#FA706C]" />
-        
-        <div className="absolute -top-4 left-7 w-3/4 h-2 bg-orange-300 rounded-full z-0"/>
+          <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-2xl border-[3px] border-[#FA706C] bg-[#FA706C]" />
 
-        <div className="absolute -left-4 top-4 w-2 h-4/5 bg-orange-300 rounded-full" />
+          <div className="absolute -top-4 left-7 w-3/4 h-2 bg-orange-300 rounded-full z-0" />
+
+          <div className="absolute -left-4 top-4 w-2 h-4/5 bg-orange-300 rounded-full" />
         </>
       )}
 
@@ -41,7 +42,6 @@ export default function AvatarCard({
       >
         {/* Avatar icon */}
         <div className="relative w-16 h-16 mb-4">
-
           {unlocked ? (
             <>
               {/* stacked squares */}
@@ -49,9 +49,11 @@ export default function AvatarCard({
 
               {/* main colored square */}
               <div
-                className="relative w-16 h-16 rounded-sm border-2 border-white"
+                className="relative w-16 h-16 rounded-sm border-2 border-white flex items-center justify-center"
                 style={{ background: color }}
-              />
+              >
+                {icon && <img src={icon} className="w-12 h-12" />}
+              </div>
             </>
           ) : (
             <div className="w-16 h-16 flex items-center justify-center bg-gray-600 rounded-sm">
