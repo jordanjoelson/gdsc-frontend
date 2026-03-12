@@ -13,26 +13,26 @@ type Props = {
 
 export default function HorizontalCourse({ courses }: Props) {
   return (
-    <div className="mt-10">
+    <div className="mt-10 w-full pb-10">
 
-      <div className="flex items-baseline justify-between mb-6">
-        <h2 className="text-white text-4xl font-semibold ml-15">
+      <div className="flex items-baseline justify-between mb-6 px-10">
+        <h2 className="text-white text-4xl font-semibold">
           Courses
         </h2>
 
         <Link
           to="/classes"
-          className="text-white/60 hover:text-orange-300 transition mr-20"
+          className="text-white/60 hover:text-orange-300 transition"
         >
           View all
         </Link>
       </div>
 
-      <div className="relative w-full max-w-246">
+      <div className="relative w-full">
 
-        <div className="relative z-10 pl-9">
+        <div className="relative z-10">
 
-          <div className="scrollbar flex gap-17 overflow-x-auto pb-10 pt-8 pl-5 max-w-full">
+          <div className="scrollbar flex gap-17 overflow-x-auto pb-10 pt-8 px-10">
 
             {courses.map((course) => (
               <div key={course.id} className="shrink-0 w-90 last:mr-20">

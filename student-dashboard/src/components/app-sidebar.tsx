@@ -55,7 +55,9 @@ export function AppSidebar() {
                     </Link>
                   </SidebarMenuItem>
                 ))}
-                <PomodoroTimer />
+                <SidebarMenuItem className="mt-6 flex justify-center py-6">
+                  <PomodoroTimer />
+                </SidebarMenuItem>
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>

@@ -23,7 +23,7 @@ const C = {
 // ─────────────────────────────────────────────
 const HOURS = Array.from({ length: 17 }, (_, i) => i + 7); // 7am–11pm
 const DAYS  = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-const ROW_H = 52;
+const ROW_H = 32;
 
 export function getWeekDates(offset = 0) {
   const now = new Date();
@@ -362,17 +362,17 @@ export function CalendarGrid({ weekDates, events, onPrev, onNext, monthLabel }: 
                 {/* Events */}
                 {dayEvents.map((ev: { startH: number; endH: number; id: Key | null | undefined; color: string; title: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; }) => {
                   const top    = (ev.startH - 7) * ROW_H;
-                  const height = Math.max((ev.endH - ev.startH) * ROW_H - 4, 22);
+                  const height = Math.max((ev.endH - ev.startH) * ROW_H - 4, 36);
                   return (
                     <div key={ev.id} style={{
                       position: "absolute", top: `${top + 2}px`, left: "3px", right: "3px",
                       height: `${height}px`, borderRadius: "8px",
                       background: ev.color + "28",
                       borderLeft: `3px solid ${ev.color}`,
-                      padding: "4px 8px", overflow: "hidden", cursor: "pointer",
+                      padding: "4px 6px", overflow: "hidden", cursor: "pointer",
                     }}>
-                      <div style={{ fontSize: "11px", fontWeight: "700", color: ev.color, fontFamily: FONT }}>{ev.title}</div>
-                      <div style={{ fontSize: "9px", color: C.textDim, fontFamily: FONT, marginTop: "1px" }}>{fmt12(ev.startH)} – {fmt12(ev.endH)}</div>
+                      <div style={{ fontSize: "10px", fontWeight: "700", color: ev.color, fontFamily: FONT, lineHeight: "1.2" }}>{ev.title}</div>
+                      <div style={{ fontSize: "8px", color: C.textDim, fontFamily: FONT, marginTop: "1px", lineHeight: "1.2" }}>{fmt12(ev.startH)} – {fmt12(ev.endH)}</div>
                     </div>
                   );
                 })}

@@ -43,7 +43,7 @@ export default function CourseCard({ id, name, progress, onDelete }: CourseCardP
           </button>
         )}
 
-        <h2 className="text-white text-3xl font-semibold mb-6">{name}</h2>
+        <h2 className="text-white text-2xl font-semibold mb-6 truncate">{name}</h2>
 
         <div className="mt-20 h-6 bg-[#1F1C3D] rounded-full">
           <div

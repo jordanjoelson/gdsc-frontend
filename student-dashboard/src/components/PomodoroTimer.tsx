@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef, type JSX } from "react";
 import '../style.css';
 
-const SIZE = 220;
-const STROKE = 18;
+const SIZE = 140;
+const STROKE = 12;
 const RADIUS = (SIZE - STROKE) / 2;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
@@ -45,14 +45,14 @@ function Btn({ color, onClick, children, small, borderRadius }: BtnProps & { bor
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        width: "60px",
-        height: "44px",
+        width: "44px",
+        height: "36px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         border: "none",
-        borderRadius: borderRadius ?? "12px",
-        fontSize: small ? "13px" : "15px",
+        borderRadius: borderRadius ?? "8px",
+        fontSize: small ? "11px" : "12px",
         fontWeight: "600",
         color: "#fff",
         cursor: "pointer",
@@ -188,7 +188,7 @@ export default function PomodoroTimer(): JSX.Element {
           </svg>
           <div style={{ position: "absolute" as const, display: "flex", flexDirection: "column" as const, alignItems: "center", gap: "6px" } as React.CSSProperties}>
             <span style={{
-              fontSize: "48px",
+              fontSize: "32px",
               fontWeight: "300",
               letterSpacing: "2px",
               lineHeight: 1,
@@ -198,7 +198,7 @@ export default function PomodoroTimer(): JSX.Element {
             }}>
               {formatTime(timeLeft)}
             </span>
-            <span style={{ fontSize: "10px", color: "#fff", letterSpacing: "3px", textTransform: "uppercase" }}>
+            <span style={{ fontSize: "8px", color: "#fff", letterSpacing: "2px", textTransform: "uppercase" }}>
               {status === "idle" ? "ready" : status === "running" ? (currentStep.type === "focus" ? "focus" : "relax") : "paused"}
             </span>
           </div>
@@ -209,7 +209,7 @@ export default function PomodoroTimer(): JSX.Element {
             {status === "idle" && (
               <button
                 onClick={handleStart}
-                className="bg-[#71D277] text-white font-semibold text-[15px] rounded-[12px] px-4 py-2 transition-transform duration-150 hover:scale-105 font-onest"
+                className="bg-[#71D277] text-white font-semibold text-[13px] rounded-[8px] px-3 py-2 transition-transform duration-150 hover:scale-105 font-onest"
                 type="button"
               >
                 ▶ Start
@@ -218,16 +218,16 @@ export default function PomodoroTimer(): JSX.Element {
           
           {status === "running" && (
             <>
-                <Btn color="#F5C542" onClick={handlePause} borderRadius="12px 0 0 12px">⏸</Btn>
+                <Btn color="#F5C542" onClick={handlePause} borderRadius="8px 0 0 8px">⏸</Btn>
                 <Btn color="#E85454" onClick={handleRestart} borderRadius="0">⏹</Btn>
-                <Btn color="#4DB3DD" onClick={handleSkip} borderRadius="0 12px 12px 0">⏭</Btn>
+                <Btn color="#4DB3DD" onClick={handleSkip} borderRadius="0 8px 8px 0">⏭</Btn>
             </>
           )}
           {status === "paused" && (
             <>
                 <button color="#71D277" 
                   onClick={handleStart}
-                  className="bg-[#71D277] text-white font-semibold text-[15px] rounded-[12px] px-4 py-2 transition-transform duration-150 hover:scale-105 font-onest"
+                  className="bg-[#71D277] text-white font-semibold text-[13px] rounded-[8px] px-3 py-2 transition-transform duration-150 hover:scale-105 font-onest"
                   type="button"
                 >
                   ▶ Resume

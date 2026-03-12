@@ -14,9 +14,9 @@ type Props = {
 
 export default function VerticalTasks({ upcomingTasks }: Props) {
   return (
-    <div className="mb-16 ml-10">
+    <div className="shrink-0">
 
-      <div className="flex items-baseline justify-between w-105 ml-10 mb-13">
+      <div className="flex items-baseline justify-between w-80 mb-13">
         <h2 className="text-white text-4xl font-semibold">
           Upcoming Tasks
         </h2>
@@ -29,7 +29,7 @@ export default function VerticalTasks({ upcomingTasks }: Props) {
         </Link>
       </div>
 
-      <div className="relative group w-120 ml-10">
+      <div className="relative group w-80">
 
         <div className="absolute -top-8 left-7 w-4/5 h-2 bg-orange-300 rounded-full z-0"></div>
 
@@ -44,15 +44,19 @@ export default function VerticalTasks({ upcomingTasks }: Props) {
             {upcomingTasks.map((task) => (
               <div
                 key={task.id}
-                className="flex items-center justify-between px-8 py-5 border-b border-white/10 last:border-none"
+                className="flex flex-col px-5 py-4 border-b border-white/10 last:border-none hover:bg-white/5 transition"
               >
-                <span className="text-white text-lg">
+                <span className="text-white text-sm font-semibold leading-tight mb-2">
                   {task.title}
                 </span>
-
-                <span className="text-white/60">
-                  {task.due}
-                </span>
+                <div className="flex justify-between items-center text-xs">
+                  <span className="text-orange-300 font-medium">
+                    {task.course}
+                  </span>
+                  <span className="text-white/50 ml-2">
+                    {task.due}
+                  </span>
+                </div>
               </div>
             ))}
 
