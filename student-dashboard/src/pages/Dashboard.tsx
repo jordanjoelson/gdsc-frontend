@@ -133,18 +133,28 @@ export default function Dashboard() {
           </Link>
         </div>
 
-        {/* Horizontal scroll container */}
-        <div className="scrollbar flex gap-10 overflow-x-auto pb-6">
+        {/* CARD WRAPPER */}
+        <div className="relative w-full max-w-300">
+          
+          {/* main container */}
+          <div className="relative z-10">
 
-          {courses.map((course) => (
-            <div key={course.id} className="min-w-90">
-              <CourseCard
-                id={course.id}
-                name={course.name}
-                progress={course.progress}
-              />
+            {/* HORIZONTAL SCROLL AREA */}
+            <div className="scrollbar flex gap-14 overflow-x-auto pb-10 px-6 pt-8 pr-70">
+
+              {courses.map((course) => (
+                <div key={course.id} className="shrink-0 w-100">
+                  <CourseCard
+                    id={course.id}
+                    name={course.name}
+                    progress={course.progress}
+                  />
+                </div>
+              ))}
+
             </div>
-          ))}
+
+          </div>
 
         </div>
 

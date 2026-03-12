@@ -3,25 +3,34 @@
 @import "shadcn/tailwind.css";
 
 :root {
-    --color-buttonbg: #fa706c;
-    --font-family-onest: "Onest", ui-sans-serif, system-ui, sans-serif;
+  --color-buttonbg: #fa706c;
+  --font-family-onest: "Onest", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Prevent whole page from scrolling sideways */
+html, body {
+  overflow-x: hidden;
 }
 
 /* Dashboard scroll styling */
 .scrollbar::-webkit-scrollbar {
   width: 5px;
+  height: 6px; /* for horizontal scrollbars */
 }
 
+/* Scrollbar track */
 .scrollbar::-webkit-scrollbar-track {
   background: #1F1C3D;
   border-radius: 8px;
 }
 
+/* Scrollbar thumb */
 .scrollbar::-webkit-scrollbar-thumb {
-  background: #fdba74;
+  background: #fdba74; 
   border-radius: 8px;
 }
 
+/* Hover state */
 .scrollbar::-webkit-scrollbar-thumb:hover {
   background: #ff8a86;
 }
