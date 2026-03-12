@@ -45,3 +45,22 @@ body {
 .scrollbar::-webkit-scrollbar-thumb:hover {
   background: #ff8a86;
 }
+
+/* Scrollbar track (the background) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Scrollbar thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background: #FFBA84;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FA706C;
+}

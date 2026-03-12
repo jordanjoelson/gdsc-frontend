@@ -8,6 +8,7 @@ import { useLocation, Outlet } from "react-router-dom"
 export default function Layout() {
   const location = useLocation();
   const hideSidebar = location.pathname === "/settings";
+  const hideUserDropdown = location.pathname === "/settings";
 
   return (
     <SidebarProvider>
@@ -15,7 +16,7 @@ export default function Layout() {
       <main className="flex-1">
         <div
           className="flex items-center justify-end gap-4 p-4 bg-[#352D51]" style={{ boxShadow: "none", border: "none" }}>
-          <UserDropdown />
+          {!hideUserDropdown && <UserDropdown />}
         </div>
 
         {/* THIS is where routed pages render */}
@@ -23,5 +24,5 @@ export default function Layout() {
 
       </main>
     </SidebarProvider>
-  )
+  );
 }

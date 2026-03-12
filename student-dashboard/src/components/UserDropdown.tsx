@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const menuItems = [
-//   { label: "Profile", route: "/settings" },
   { label: "Settings", route: "/settings" },
   { label: "Help Center" },
   { label: "Sign Out" },
@@ -49,9 +48,16 @@ export function UserDropdown() {
           {menuItems.map((item, idx) => (
             <button
               key={item.label}
-              className={`w-full text-left px-4 py-3 rounded-lg text-white font-medium bg-transparent hover:bg-[#FA706C] hover:text-black transition-colors duration-150 ${idx === 3 ? "border-t border-[#4A4063] mt-2 pt-2" : ""}`}
+              className={`w-full text-left px-4 py-3 rounded-lg text-white font-medium bg-transparent hover:bg-[#FA706C] hover:text-black transition-colors duration-150 ${idx === 2 ? "border-t border-[#4A4063] mt-2 pt-2" : ""}`}
               onClick={() => {
-                if (item.route) navigate(item.route);
+                if (item.label === "Sign Out") {
+                  // Add sign out logic here
+                  // Example: clear localStorage and redirect to login
+                  localStorage.clear();
+                  navigate("/login");
+                } else if (item.route) {
+                  navigate(item.route);
+                }
                 setOpen(false);
               }}
             >

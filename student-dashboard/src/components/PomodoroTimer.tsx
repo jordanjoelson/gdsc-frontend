@@ -149,14 +149,12 @@ export default function PomodoroTimer(): JSX.Element {
       <div style={{
         background: "transparent",
         borderRadius: "28px",
-        // padding: "40px 8px",
         display: "flex",
         flexDirection: "column" as const,
         alignItems: "center",
         gap: "24px",
         boxShadow: "none",
         border: "none",
-        // minWidth: "320px",
       } as React.CSSProperties}>
 
         {/* Session label */}
@@ -208,9 +206,15 @@ export default function PomodoroTimer(): JSX.Element {
 
         {/* Buttons */}
         <div style={{ display: "flex", gap: "0px", alignItems: "center" } as React.CSSProperties}>
-          {status === "idle" && (
-            <Btn color="#71D277" onClick={handleStart}>▶ Start</Btn>
-          )}
+            {status === "idle" && (
+              <button
+                onClick={handleStart}
+                className="bg-[#71D277] text-white font-semibold text-[15px] rounded-[12px] px-4 py-2 transition-transform duration-150 hover:scale-105 font-onest"
+                type="button"
+              >
+                ▶ Start
+              </button>
+            )}
           
           {status === "running" && (
             <>
@@ -221,7 +225,13 @@ export default function PomodoroTimer(): JSX.Element {
           )}
           {status === "paused" && (
             <>
-                <Btn color="#71D277" onClick={handleStart}>▶ Resume</Btn>
+                <button color="#71D277" 
+                  onClick={handleStart}
+                  className="bg-[#71D277] text-white font-semibold text-[15px] rounded-[12px] px-4 py-2 transition-transform duration-150 hover:scale-105 font-onest"
+                  type="button"
+                >
+                  ▶ Resume
+                </button>
 
             </>
           )}
@@ -231,3 +241,4 @@ export default function PomodoroTimer(): JSX.Element {
     </div>
   );
 }
+
