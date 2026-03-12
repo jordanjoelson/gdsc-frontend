@@ -49,10 +49,10 @@ export default function Dashboard() {
     .sort((a, b) => new Date(a.due).getTime() - new Date(b.due).getTime())
 
   return (
-    <section className="pt-10 pr-10 pb-10 min-h-screen bg-[#352D51]">
+    <section className="pt-10 pr-10 pb-10 min-h-screen bg-[#352D51] overflow-x-hidden">
 
       {/* Welcome */}
-      <h1 className="text-white text-6xl font-bold mb-12 -mt-15">
+      <h1 className="text-white text-6xl font-bold mb-12 -mt-12">
         Welcome, User!
       </h1>
 
@@ -120,21 +120,21 @@ export default function Dashboard() {
 
           <Link
             to="/classes"
-            className="text-white/60 hover:text-orange-300 transition"
+            className="text-white/60 hover:text-orange-300 transition mr-20"
           >
             View all
           </Link>
         </div>
 
-        <div className="relative w-full max-w-300">
+        <div className="relative w-full max-w-255">
 
           <div className="relative z-10">
 
             {/* HORIZONTAL SCROLL */}
-            <div className="scrollbar flex gap-14 overflow-x-auto pb-10 pt-8 pr-60 pl-20">
+            <div className="scrollbar flex gap-14 overflow-x-auto pb-10 pt-8 pl-20 max-w-full">
 
               {courses.map((course) => (
-                <div key={course.id} className="shrink-0 w-100">
+                <div key={course.id} className="shrink-0 w-100 last:mr-20">
                   <CourseCard
                     id={course.id}
                     name={course.name}
