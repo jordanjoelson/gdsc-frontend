@@ -27,7 +27,7 @@ export default function CourseSections() {
     localStorage.setItem("courses", JSON.stringify(courses))
   }, [courses])
 
-  // ✅ NEW: refresh courses when tasks page updates progress
+  // refresh courses when tasks page updates progress
   useEffect(() => {
     function refreshCourses() {
       const saved = localStorage.getItem("courses")
@@ -59,7 +59,7 @@ export default function CourseSections() {
       {
         id: crypto.randomUUID(),
         name,
-        progress: 0, // always starts at 0
+        progress: 0,
       },
     ])
 
@@ -68,9 +68,23 @@ export default function CourseSections() {
     setIsOpen(false)
   }
 
+  // ✅ FIXED DELETE FUNCTION
   function deleteCourse(id: string) {
     if (!window.confirm("Are you sure you want to delete this course?")) return
+
+    // remove course from state
     setCourses((prev) => prev.filter((c) => c.id !== id))
+
+    // remove tasks tied to that course
+    const raw = localStorage.getItem("tasksByCourse")
+    if (raw) {
+      const tasks = JSON.parse(raw)
+      delete tasks[id]
+      localStorage.setItem("tasksByCourse", JSON.stringify(tasks))
+    }
+
+    // notify other pages
+    window.dispatchEvent(new Event("courses-updated"))
   }
 
   return (
