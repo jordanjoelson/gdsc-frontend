@@ -25,7 +25,7 @@ const HOURS = Array.from({ length: 17 }, (_, i) => i + 7); // 7am–11pm
 const DAYS  = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const ROW_H = 52;
 
-function getWeekDates(offset = 0) {
+export function getWeekDates(offset = 0) {
   const now = new Date();
   const sunday = new Date(now);
   sunday.setDate(now.getDate() - now.getDay() + offset * 7);
@@ -51,9 +51,20 @@ function isSameDay(a: Date, b: Date) {
 // ─────────────────────────────────────────────
 // PANEL BOX — the "double rectangle" wrapper
 // ─────────────────────────────────────────────
-function PanelBox({ children, style = {} }: { children: ReactNode; style?: React.CSSProperties }) {
+export function PanelBox({ children, style = {} }: { children: ReactNode; style?: React.CSSProperties }) {
+  // Allow height to be controlled via style prop
+  const outerStyle: React.CSSProperties = { position: "relative", ...style };
+  const innerStyle: React.CSSProperties = {
+    position: "relative",
+    background: C.box,
+    borderRadius: "14px",
+    overflow: "hidden",
+    height: style.height || "100%",
+    display: "flex",
+    flexDirection: "column",
+  };
   return (
-    <div style={{ position: "relative", ...style }}>
+    <div style={outerStyle}>
       {/* Shadow rectangle (offset behind) */}
       <div style={{
         position: "absolute",
@@ -63,15 +74,7 @@ function PanelBox({ children, style = {} }: { children: ReactNode; style?: React
         borderRadius: "14px",
       }} />
       {/* Main box */}
-      <div style={{
-        position: "relative",
-        background: C.box,
-        borderRadius: "14px",
-        overflow: "hidden",
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-      }}>
+      <div style={innerStyle}>
         {children}
       </div>
     </div>
@@ -282,7 +285,7 @@ function AddEventModal({ onClose, onAdd }: { onClose: () => void; onAdd: (event:
 // ─────────────────────────────────────────────
 // CALENDAR GRID
 // ─────────────────────────────────────────────
-function CalendarGrid({ weekDates, events, onPrev, onNext, monthLabel }: { weekDates: Date[]; events: any[]; onPrev: () => void; onNext: () => void; monthLabel: string }) {
+export function CalendarGrid({ weekDates, events, onPrev, onNext, monthLabel }: { weekDates: Date[]; events: any[]; onPrev: () => void; onNext: () => void; monthLabel: string }) {
   const now = new Date();
   const nowTop = ((now.getHours() * 60 + now.getMinutes() - 7 * 60) / 60) * ROW_H;
 

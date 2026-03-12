@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import HorizontalCourse from "@/components/HorizontalCourse"
 import VerticalTasks from "@/components/VerticalTasks"
+import { CalendarGrid, getWeekDates, PanelBox } from "@/pages/Calendar";
 
 type Task = {
   id: string
@@ -21,6 +22,11 @@ type TasksByCourse = Record<string, Task[]>
 export default function Dashboard() {
   const [courses, setCourses] = useState<Course[]>([])
   const [tasksByCourse, setTasksByCourse] = useState<TasksByCourse>({})
+
+  const [weekOffset, setWeekOffset] = useState(0);
+  const [events, setEvents] = useState([]);
+  const weekDates = getWeekDates(weekOffset);
+  const monthLabel = weekDates[0].toLocaleDateString("en-US", { month: "long", year: "numeric" });
 
   function loadData() {
     const savedCourses = localStorage.getItem("courses")
@@ -55,7 +61,19 @@ export default function Dashboard() {
         Welcome, User!
       </h1>
 
-      <VerticalTasks upcomingTasks={upcomingTasks} />
+      <div className="flex gap-30">
+        <VerticalTasks upcomingTasks={upcomingTasks} />
+        <PanelBox style={{ width: "800px", height: "500px" }}>
+          <CalendarGrid
+            weekDates={weekDates}
+            events={events}
+            onPrev={() => setWeekOffset(w => w - 1)}
+            onNext={() => setWeekOffset(w => w + 1)}
+          monthLabel={monthLabel}
+          />
+      </PanelBox>
+      </div>
+      
 
       <HorizontalCourse courses={courses} />
 
