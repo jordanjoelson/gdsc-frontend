@@ -28,14 +28,14 @@ export default function HorizontalCourse({ courses }: Props) {
         </Link>
       </div>
 
-      <div className="relative w-full max-w-255">
+      <div className="relative w-full max-w-246">
 
-        <div className="relative z-10">
+        <div className="relative z-10 pl-9">
 
-          <div className="scrollbar flex gap-14 overflow-x-auto pb-10 pt-8 pl-20 max-w-full">
+          <div className="scrollbar flex gap-17 overflow-x-auto pb-10 pt-8 pl-5 max-w-full">
 
             {courses.map((course) => (
-              <div key={course.id} className="shrink-0 w-100 last:mr-20">
+              <div key={course.id} className="shrink-0 w-90 last:mr-20">
                 <CourseCard
                   id={course.id}
                   name={course.name}

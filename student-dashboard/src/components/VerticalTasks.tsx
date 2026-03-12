@@ -14,9 +14,9 @@ type Props = {
 
 export default function VerticalTasks({ upcomingTasks }: Props) {
   return (
-    <div className="mb-16">
+    <div className="mb-16 ml-10">
 
-      <div className="flex items-center justify-between w-120 ml-10 mb-13">
+      <div className="flex items-baseline justify-between w-105 ml-10 mb-13">
         <h2 className="text-white text-4xl font-semibold">
           Upcoming Tasks
         </h2>

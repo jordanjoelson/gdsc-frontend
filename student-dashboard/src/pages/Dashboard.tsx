@@ -49,9 +49,9 @@ export default function Dashboard() {
     .sort((a, b) => new Date(a.due).getTime() - new Date(b.due).getTime())
 
   return (
-    <section className="pt-10 pr-10 pb-10 min-h-screen bg-[#352D51] overflow-x-hidden">
+    <section className="pr-10 pb-10 min-h-screen bg-[#352D51] overflow-x-hidden">
 
-      <h1 className="text-white text-6xl font-bold mb-12 -mt-12">
+      <h1 className="text-white text-7xl font-bold mb-14 -mt-3 ml-12">
         Welcome, User!
       </h1>
 
