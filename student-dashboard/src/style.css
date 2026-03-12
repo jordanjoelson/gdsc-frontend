@@ -7,15 +7,26 @@
   --font-family-onest: "Onest", ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Prevent whole page from scrolling sideways */
-html, body {
+/* Prevent sideways scrolling + keep background consistent */
+html,
+body {
   overflow-x: hidden;
+  background-color: #352D51;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+/* Ensure the React app fills the screen */
+#root {
+  min-height: 100vh;
+  background-color: #352D51;
 }
 
 /* Dashboard scroll styling */
 .scrollbar::-webkit-scrollbar {
   width: 5px;
-  height: 6px; /* for horizontal scrollbars */
+  height: 6px; /* horizontal scrollbar height */
 }
 
 /* Scrollbar track */
@@ -26,7 +37,7 @@ html, body {
 
 /* Scrollbar thumb */
 .scrollbar::-webkit-scrollbar-thumb {
-  background: #fdba74; 
+  background: #fdba74;
   border-radius: 8px;
 }
 
