@@ -75,7 +75,7 @@ export default function CourseSections() {
 
   return (
     <section className="min-h-screen bg-[#352D51] px-10 py-6">
-      <h2 className="text-6xl font-semibold mb-4 text-white">Courses</h2>
+      <h2 className="text-6xl font-semibold mb-4 -mt-12 text-white">Courses</h2>
 
       <div className="mt-15 mb-12 grid gap-18 grid-cols-[repeat(auto-fit,minmax(360px,1fr))]">
         {courses.map((c) => (

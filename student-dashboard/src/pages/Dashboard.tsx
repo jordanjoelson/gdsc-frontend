@@ -1,18 +1,64 @@
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react"
+import HorizontalCourse from "@/components/HorizontalCourse"
+import VerticalTasks from "@/components/VerticalTasks"
+
+type Task = {
+  id: string
+  course: string
+  title: string
+  due: string
+  done: boolean
+}
+
+type Course = {
+  id: string
+  name: string
+  progress: number
+}
+
+type TasksByCourse = Record<string, Task[]>
 
 export default function Dashboard() {
-  const navigate = useNavigate();
+  const [courses, setCourses] = useState<Course[]>([])
+  const [tasksByCourse, setTasksByCourse] = useState<TasksByCourse>({})
+
+  function loadData() {
+    const savedCourses = localStorage.getItem("courses")
+    const savedTasks = localStorage.getItem("tasksByCourse")
+
+    if (savedCourses) setCourses(JSON.parse(savedCourses))
+    if (savedTasks) setTasksByCourse(JSON.parse(savedTasks))
+  }
+
+  useEffect(() => {
+    loadData()
+
+    window.addEventListener("courses-updated", loadData)
+    window.addEventListener("storage", loadData)
+
+    return () => {
+      window.removeEventListener("courses-updated", loadData)
+      window.removeEventListener("storage", loadData)
+    }
+  }, [])
+
+  const allTasks = Object.values(tasksByCourse).flat()
+
+  const upcomingTasks = allTasks
+    .filter((task) => !task.done)
+    .sort((a, b) => new Date(a.due).getTime() - new Date(b.due).getTime())
+
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <button
-        style={{
-          background: 'black', color: 'white', padding: '12px 24px', borderRadius: '8px', border: 'none', fontSize: '16px', marginTop: '24px', cursor: 'pointer'
-        }}
-        onClick={() => navigate('/settings')}
-      >
-        Go to Settings
-      </button>
-    </div>
-  );
+    <section className="pr-10 pb-10 min-h-screen bg-[#352D51] overflow-x-hidden">
+
+      <h1 className="text-white text-7xl font-bold mb-14 -mt-3 ml-12">
+        Welcome, User!
+      </h1>
+
+      <VerticalTasks upcomingTasks={upcomingTasks} />
+
+      <HorizontalCourse courses={courses} />
+
+    </section>
+  )
 }
