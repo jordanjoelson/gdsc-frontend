@@ -15,7 +15,7 @@ export default function XPProgressBar({ current, max }: XPProgressBarProps) {
         />
       </div>
 
-      <p className="text-right text-white/70 mt-2 text-sm">
+      <p className="text-right text-white/70 mt-3 text-xl">
         {current}/{max} XP
       </p>
     </div>

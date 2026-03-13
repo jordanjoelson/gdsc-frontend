@@ -28,8 +28,8 @@ export default function StatsCard({
           <div className="flex justify-between items-center">
             
             <div>
-              <p className="text-white/70 mb-1">{title}</p>
-              <p className="text-white text-5xl font-semibold">{value}</p>
+              <p className="text-white/70 mb-3 text-xl">{title}</p>
+              <p className="text-white text-6xl font-semibold text-center">{value}</p>
             </div>
 
             <div className="text-right">
@@ -44,8 +44,8 @@ export default function StatsCard({
         ) : (
 
           <>
-            <p className="text-white/70 mb-1">{title}</p>
-            <p className="text-white text-5xl font-semibold mb-5">{value}</p>
+            <p className="text-white/70 mb-3 text-xl">{title}</p>
+            <p className="text-white text-6xl font-semibold mb-5">{value}</p>
 
             {subtitle && (
               <p className="text-white/70 text-sm mb-3">{subtitle}</p>

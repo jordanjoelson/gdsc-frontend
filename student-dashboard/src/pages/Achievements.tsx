@@ -120,13 +120,13 @@ export default function Achievements() {
           value="113"
           subtitle={
             <div className="text-white text-right space-y-1">
-              <p className="text-sm font-semibold">Next level goal:</p>
+              <p className="text-xl font-semibold">Next level goal:</p>
 
-              <p className="text-2xl font-bold">
+              <p className="text-4xl font-bold">
                 <span className="text-red-400">23</span> tasks left
               </p>
 
-              <p className="text-sm text-white/70">
+              <p className="text-xl text-white/70">
                 Complete more tasks to reach level 38
               </p>
             </div>
