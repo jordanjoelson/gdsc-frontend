@@ -41,7 +41,7 @@ export default function AllTasks() {
     <section className="p-10 min-h-screen bg-[#352D51]">
       <h1 className="text-white text-6xl font-bold mb-12 -mt-15">All tasks</h1>
 
-      <div className="flex flex-col gap-12 max-w-6xl">
+      <div className="flex flex-col gap-12 w-full">
         {allCourses.map((courseId) => {
           const tasks = tasksByCourse[courseId] ?? []
 
