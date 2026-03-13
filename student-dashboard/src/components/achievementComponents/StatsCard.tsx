@@ -14,7 +14,7 @@ export default function StatsCard({
   layout = "default",
 }: StatsCardProps) {
   return (
-    <div className="relative w-full max-w-4xl mx-auto transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-[1.02] mb-10">
+    <div className="relative w-full mx-auto transform transition-all duration-300 ease-in-out hover:-translate-y-2 hover:scale-[1.02] mb-10">
 
       <div className="absolute -top-4 left-7 w-4/5 h-1.5 bg-orange-300 rounded-full z-0"></div>
       <div className="absolute -left-4 top-4 w-1.5 h-4/5 bg-orange-300 rounded-full" />
