@@ -269,7 +269,7 @@ export default function CourseTasksPage() {
         </button>
       </div>
 
-      <motion.div layout className="flex flex-col gap-5 max-w-6xl">
+      <motion.div layout className="flex flex-col gap-8">
         <AnimatePresence initial={false}>
           {sortedTasks.map((t) => (
             <motion.div
