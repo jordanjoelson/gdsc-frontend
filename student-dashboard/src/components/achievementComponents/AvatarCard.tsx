@@ -17,14 +17,14 @@ export default function AvatarCard({
 }: AvatarCardProps) {
   return (
     <div
-      className={`group relative w-45 transition-all duration-300 ml-2 ${
+      className={`group relative w-55 transition-all duration-300 ${
         unlocked ? "hover:-translate-y-2" : ""
       }`}
     >
       {/* Coral offset card (only if unlocked) */}
       {unlocked && (
         <>
-          <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-2xl border-[3px] border-[#FA706C] bg-[#FA706C]" />
+          <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-2xl border-[3px] border-[#FA706C] bg-[#FA706C]" />
 
           <div className="absolute -top-4 left-7 w-3/4 h-2 bg-orange-300 rounded-full z-0" />
 
@@ -41,15 +41,15 @@ export default function AvatarCard({
         }`}
       >
         {/* Avatar icon */}
-        <div className="relative w-16 h-16 mb-4">
+        <div className="relative w-20 h-20 mb-4">
           {unlocked ? (
             <>
               {/* stacked squares */}
-              <div className="absolute w-16 h-16 bg-white rounded-sm translate-x-1.5 translate-y-1.5" />
+              <div className="absolute w-20 h-20 bg-white rounded-sm translate-x-1.5 translate-y-1.5" />
 
               {/* main colored square */}
               <div
-                className="relative w-16 h-16 rounded-sm border-2 border-white flex items-center justify-center"
+                className="relative w-20 h-20 rounded-sm border-2 border-white flex items-center justify-center"
                 style={{ background: color }}
               >
                 {icon && <img src={icon} className="w-12 h-12" />}
@@ -64,7 +64,7 @@ export default function AvatarCard({
 
         {/* Title */}
         <h3
-          className={`font-semibold min-h-12 flex items-center justify-center ${
+          className={`font-semibold line-clamp-2 h-14 text-2xl flex items-center justify-center text-center ${
             unlocked ? "text-white" : "text-gray-400"
           }`}
         >
@@ -72,15 +72,15 @@ export default function AvatarCard({
         </h3>
 
         {/* Description */}
-        <p className="text-white/60 text-sm mt-1 line-clamp-2 min-h-10">
+        <p className="text-white/60 text-xl mt-1 line-clamp-2 min-h-10">
           {description}
         </p>
 
         {/* Status */}
         {unlocked ? (
-          <p className="text-green-400 text-sm mt-3">✔ Unlocked</p>
+          <p className="text-green-400 text-sm mt-3 mb-3">✔ Unlocked</p>
         ) : (
-          <p className="text-white/40 text-sm mt-3">Locked</p>
+          <p className="text-white/40 text-sm mt-3 mb-3">Locked</p>
         )}
       </div>
     </div>
