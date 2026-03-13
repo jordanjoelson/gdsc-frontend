@@ -135,7 +135,7 @@ export default function Achievements() {
 
       </div>
 
-      <h2 className="text-white text-5xl font-semibold mb-15 -mt-8">
+      <h2 className="text-white text-5xl font-semibold mb-15">
         Avatars Earned:
       </h2>
 
