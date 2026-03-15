@@ -13,9 +13,9 @@ type Props = {
 
 export default function HorizontalCourse({ courses }: Props) {
   return (
-    <div className="mt-10 w-full pb-10">
+    <div className="mt-5 w-full -ml-5">
 
-      <div className="flex items-baseline justify-between mb-6 px-10">
+      <div className="flex items-baseline justify-between mb-6">
         <h2 className="text-white text-4xl font-semibold">
           Courses
         </h2>
@@ -32,10 +32,10 @@ export default function HorizontalCourse({ courses }: Props) {
 
         <div className="relative z-10">
 
-          <div className="scrollbar flex gap-17 overflow-x-auto pb-10 pt-8 px-10">
+          <div className="scrollbar flex gap-17 overflow-x-auto pb-10 pt-8 px-5 w-full">
 
             {courses.map((course) => (
-              <div key={course.id} className="shrink-0 w-90 last:mr-20">
+              <div key={course.id} className="shrink-0 w-100">
                 <CourseCard
                   id={course.id}
                   name={course.name}
