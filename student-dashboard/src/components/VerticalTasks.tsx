@@ -16,7 +16,7 @@ export default function VerticalTasks({ upcomingTasks }: Props) {
   return (
     <div className="shrink-0">
 
-      <div className="flex items-baseline justify-between w-80 mb-13">
+      <div className="flex items-baseline justify-between w-140 mb-13">
         <h2 className="text-white text-4xl font-semibold">
           Upcoming Tasks
         </h2>
@@ -29,7 +29,7 @@ export default function VerticalTasks({ upcomingTasks }: Props) {
         </Link>
       </div>
 
-      <div className="relative group w-80">
+      <div className="relative group w-150">
 
         <div className="absolute -top-8 left-7 w-4/5 h-2 bg-orange-300 rounded-full z-0"></div>
 
