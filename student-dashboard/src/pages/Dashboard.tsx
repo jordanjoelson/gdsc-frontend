@@ -20,14 +20,18 @@ type Course = {
 type TasksByCourse = Record<string, Task[]>
 
 export default function Dashboard() {
+
   const [courses, setCourses] = useState<Course[]>([])
   const [tasksByCourse, setTasksByCourse] = useState<TasksByCourse>({})
 
   const [weekOffset, setWeekOffset] = useState(0)
-  const [events] = useState([])
 
   const weekDates = getWeekDates(weekOffset)
-  const monthLabel = weekDates[0].toLocaleDateString("en-US", { month: "long", year: "numeric" })
+
+  const monthLabel = weekDates[0].toLocaleDateString(
+    "en-US",
+    { month: "long", year: "numeric" }
+  )
 
   function loadData() {
     const savedCourses = localStorage.getItem("courses")
@@ -52,13 +56,27 @@ export default function Dashboard() {
   const allTasks = Object.values(tasksByCourse).flat()
 
   const upcomingTasks = allTasks
-    .filter((task) => !task.done)
-    .sort((a, b) => new Date(a.due).getTime() - new Date(b.due).getTime())
+    .filter(task => !task.done)
+    .sort((a, b) =>
+      new Date(a.due).getTime() - new Date(b.due).getTime()
+    )
+
+  /* ─────────────────────────────
+     CONNECT TASKS TO CALENDAR
+  ───────────────────────────── */
+
+  const events = upcomingTasks.map(task => ({
+    id: task.id,
+    title: task.title,
+    date: task.due,
+    startH: 9,
+    endH: 10,
+    color: "#FA706C"
+  }))
 
   return (
     <section className="pb-10 min-h-screen bg-[#352D51] overflow-x-hidden pl-8">
 
-      {/* Main centered container */}
       <div className="w-full max-w-350 mx-auto px-6">
 
         <h1 className="text-white text-6xl font-bold mb-12 -ml-7">
@@ -66,6 +84,7 @@ export default function Dashboard() {
         </h1>
 
         {/* Tasks + Calendar */}
+
         <div className="flex gap-12 items-start">
 
           <div className="flex-1">
@@ -73,7 +92,9 @@ export default function Dashboard() {
           </div>
 
           <div className="flex-1">
+
             <PanelBox style={{ width: "100%", height: "500px" }}>
+
               <CalendarGrid
                 weekDates={weekDates}
                 events={events}
@@ -81,12 +102,15 @@ export default function Dashboard() {
                 onNext={() => setWeekOffset(w => w + 1)}
                 monthLabel={monthLabel}
               />
+
             </PanelBox>
+
           </div>
 
         </div>
 
         {/* Courses */}
+
         <HorizontalCourse courses={courses} />
 
       </div>
